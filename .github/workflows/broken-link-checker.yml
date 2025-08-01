@@ -1,0 +1,19 @@
+name: Broken Link Checker
+on:
+  push:
+    paths:
+      - '**/*.md'
+      - '**/*.html'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.html'
+jobs:
+  linkchecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1.10.0
+        with:
+          args: --verbose --no-progress '**/*.md' '**/*.html'

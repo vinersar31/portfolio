@@ -1,0 +1,21 @@
+name: Lint HTML
+on:
+  push:
+    paths:
+      - '**/*.html'
+  pull_request:
+    paths:
+      - '**/*.html'
+jobs:
+  htmllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install htmllint
+        run: npm install htmllint --save-dev
+      - name: Run htmllint
+        run: npx htmllint "**/*.html"
