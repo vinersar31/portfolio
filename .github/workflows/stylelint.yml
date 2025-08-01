@@ -1,0 +1,21 @@
+name: Lint CSS
+on:
+  push:
+    paths:
+      - '**/*.css'
+  pull_request:
+    paths:
+      - '**/*.css'
+jobs:
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install stylelint
+        run: npm install stylelint stylelint-config-standard --save-dev
+      - name: Run stylelint
+        run: npx stylelint "**/*.css"
