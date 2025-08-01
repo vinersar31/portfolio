@@ -1,0 +1,5 @@
+Limit the commit title line to 80 characters maximum.
+
+Explain the problem and consequences of this change in detail below.
+
+See https://chris.beams.io/posts/git-commit/#seven-rules for guidelines.
