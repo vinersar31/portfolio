@@ -2,3 +2,6 @@ title: My Portfolio
 description: A simple portfolio site
 theme: null
 markdown: kramdown
+author: Vinersar Dan-Ioan
+url: "https://vinersar31.github.io"
+baseurl: "/portfolio"
