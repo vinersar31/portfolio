@@ -50,8 +50,9 @@ title: Home
     <span class="h">H</span><span class="e">e</span><span class="l1">l</span><span class="l2">l</span><span class="o">o</span><span class="period">.</span>
   </h1>
   <p class="description">
-    I’m a passionate software developer who builds clean, efficient, and
-    user-friendly applications.<br />
-    Experienced in web technologies and always eager to learn new things.
+    I’m a software developer with a strong background in <strong>C++</strong> and 
+    <strong>ADAS systems</strong>, focused on building reliable and performance-critical applications.<br />
+    I’m deeply passionate about <strong>artificial intelligence</strong>, 
+    <strong>machine learning</strong>, and <strong>embedded systems</strong> — always exploring how these technologies can work together to solve real-world problems.
   </p>
 </section>
