@@ -1,6 +1,6 @@
 .site-nav {
   display: flex;
-  justify-content: center; /* or use 'flex-end' to align right */
+  justify-content: center; /* or 'flex-end' */
   background-color: #fff;
   border-bottom: 1px solid #eaeaea;
   padding: 1rem 2rem;
@@ -97,8 +97,8 @@
   font-size: 2.8rem;
   font-weight: 800;
   background: linear-gradient(90deg, #ff4d4d, #4d79ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 2.5rem;
   letter-spacing: 1px;
   position: relative;
@@ -129,17 +129,17 @@
 
 /* Project Cards */
 .project-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 5%);
   backdrop-filter: blur(12px);
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgb(0 0 0 / 15%);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 25%);
 }
 
 /* Headings */
@@ -177,9 +177,6 @@
 }
 
 .btn:hover {
-  background: linear-gradient(90deg, #ff6666, #667aff);
+  background: linear-gradient(90deg, #f66, #667aff);
   transform: scale(1.05);
 }
-
-
-
