@@ -14,12 +14,11 @@ A playground for experimenting with AI models and tools.
 A playground for experimenting with the ESP32 microcontroller and learning how to control electronics like LEDs, sensors, and more.  
 [🔗 View Repository](https://github.com/vinersar31/esp32_playground)
 
-## Ecommerce Mobile App
-Created a ecommerce mobile app for my bachelor’s degree where you could trade games with a similar interface to Steam,  
-using **Xamarin Forms** and **C#**.  
-[🔗 View Repository](https://github.com/vinersar31/Licenta-Ecommerce)
+## Ecommerce Mobile App (Bachelor’s Degree – Computer Engineering & Computer Science)
+Created a ecommerce mobile app for my bachelor’s degree,  
+where users could trade games, built using **Xamarin Forms** and **C#**.  
 
-## Jira & Project Metrics
-A project for collecting and visualizing Agile-related data from Jira, Confluence, and manual inputs,  
-displayed in **Grafana** dashboards powered by **Prometheus** for time-series analytics.
-
+## Jira & Project Metrics (Master’s Degree – Project Management)
+Developed as part of my master’s degree in Project Management,  
+this project collects and visualizes Agile-related data from Jira, Confluence, Excel, and manual entries,  
+with insights displayed in **Grafana** dashboards powered by **Prometheus** for time-series analytics. 
