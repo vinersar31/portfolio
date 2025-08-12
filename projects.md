@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects.html
 ---
 
-# Projects
+## Projects
 
 <section class="projects-grid">
 
