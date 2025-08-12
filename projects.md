@@ -45,6 +45,12 @@ permalink: /projects.html
       could trade games. Built using <strong>Xamarin Forms</strong> and
       <strong>C#</strong>.
     </p>
+    <p>
+      <a class="btn" href="https://github.com/vinersar31/Steam-Ecommerce-App"
+         target="_blank" rel="noopener noreferrer">
+        🔗 View Repository
+      </a>
+    </p>
   </article>
 
   <article class="project-card">
@@ -56,6 +62,12 @@ permalink: /projects.html
       project collects and visualizes Agile-related data from Jira,
       Confluence, Excel, and manual entries. Insights are shown in
       Grafana dashboards powered by Prometheus for time-series analytics.
+    </p>
+    <p>
+      <a class="btn" href="https://github.com/vinersar31/Jira-Project-Metrics"
+         target="_blank" rel="noopener noreferrer">
+        🔗 View Repository
+      </a>
     </p>
   </article>
 
