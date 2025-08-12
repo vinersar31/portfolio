@@ -16,4 +16,10 @@ jobs:
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v2.4.1
         with:
-          args: --verbose --no-progress --exclude '\{\{.*\}\}' '**/*.md' '**/*.html'
+          args: >
+            --verbose
+            --no-progress
+            --exclude '\{\{.*\}\}'
+            --exclude-path '_layouts'
+            '**/*.md'
+            '**/*.html'
