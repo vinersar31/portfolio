@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects.html
 ---
 
-## Projects
+<h2 class="projects-title">🚀 Projects</h2>
 
 <section class="projects-grid">
 
@@ -13,12 +13,10 @@ permalink: /projects.html
     <p>
       A playground for experimenting with AI models and tools.
     </p>
-    <p>
-      <a class="btn" href="https://github.com/vinersar31/ai_playground"
-         target="_blank" rel="noopener noreferrer">
-        🔗 View Repository
-      </a>
-    </p>
+    <a class="btn" href="https://github.com/vinersar31/ai_playground"
+       target="_blank" rel="noopener noreferrer">
+      🔗 View Repository
+    </a>
   </article>
 
   <article class="project-card">
@@ -27,18 +25,16 @@ permalink: /projects.html
       A playground for experimenting with the ESP32 microcontroller and
       learning how to control electronics like LEDs, sensors, and more.
     </p>
-    <p>
-      <a class="btn" href="https://github.com/vinersar31/esp32_playground"
-         target="_blank" rel="noopener noreferrer">
-        🔗 View Repository
-      </a>
-    </p>
+    <a class="btn" href="https://github.com/vinersar31/esp32_playground"
+       target="_blank" rel="noopener noreferrer">
+      🔗 View Repository
+    </a>
   </article>
 
   <article class="project-card">
-    <h3>Ecommerce Mobile App
-      <small> (Bachelor’s Degree – Computer Engineering &amp;
-      Computer Science)</small>
+    <h3>
+      Ecommerce Mobile App
+      <small>(Bachelor’s Degree – Computer Engineering &amp; Computer Science)</small>
     </h3>
     <p>
       Created an ecommerce mobile app for my bachelor’s degree where users
@@ -48,8 +44,9 @@ permalink: /projects.html
   </article>
 
   <article class="project-card">
-    <h3>Jira &amp; Project Metrics
-      <small> (Master’s Degree – Project Management)</small>
+    <h3>
+      Jira &amp; Project Metrics
+      <small>(Master’s Degree – Project Management)</small>
     </h3>
     <p>
       Developed as part of my master’s degree in Project Management. This
