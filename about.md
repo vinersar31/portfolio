@@ -8,11 +8,14 @@ permalink: /about.html
   <h1>Hi there 👋</h1>
   
   <p>
-    I'm a curious and creative software developer who loves building things — whether it's a clean web interface, a clever script, or a side project that scratches a personal itch.
+    I'm a software developer passionate about building meaningful tools and solving complex problems.  
+    At work, I focus on developing and maintaining software products while exploring ways to make workflows smoother and more efficient.  
+    I enjoy bridging technical skills with creativity, whether it’s coding, designing dashboards, or automating repetitive tasks.
   </p>
 
   <p>
-    I’m always exploring new technologies, automating workflows, and occasionally over-engineering solutions for fun. When I’m not coding, you might find me reading, walking around the city, or thinking about the next idea I want to build.
+    Outside of work, I’m equally curious and love exploring many areas of life. I’m into finance, stocks, economics, and politics — always trying to understand how the world works.  
+    I also enjoy video games 🎮, going out with friends, and just having fun when I’m not experimenting with side projects.
   </p>
 
   <p>
@@ -22,8 +25,11 @@ permalink: /about.html
   <h2>Things I enjoy</h2>
   <ul>
     <li>💻 Building useful tools</li>
-    <li>📈 Visualizing data in interesting ways</li>
+    <li>📈 Visualizing data in creative ways</li>
     <li>🤖 Playing with AI & automation</li>
-    <li>📚 Learning constantly</li>
+    <li>🎮 Gaming & unwinding with friends</li>
+    <li>💹 Exploring finance, stocks & economics</li>
+    <li>🗳️ Following politics & global events</li>
+    <li>🌍 Learning constantly</li>
   </ul>
 </section>

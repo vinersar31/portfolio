@@ -58,7 +58,7 @@ permalink: /projects.html
      href="https://github.com/vinersar31/pulse_board"
      target="_blank" rel="noopener noreferrer"
      title="Private Repository (only accessible with permission)">
-    🔒 Private Repository
+    🔒 View Repository
     </a>
   </article>
 
