@@ -196,3 +196,84 @@
   opacity: 0.85;
 }
 
+/* ===== Global Background ===== */
+body {
+  background: linear-gradient(135deg, #f0f4ff, #fdfdfd);
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  color: #222;
+}
+
+/* ===== About Page Styles ===== */
+.about-section {
+  max-width: 850px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 10%);
+  line-height: 1.75;
+  font-size: 1.1rem;
+  animation: fadeIn 0.7s ease-in-out;
+  backdrop-filter: blur(6px);
+}
+
+.about-section h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+.about-section h2 {
+  font-size: 1.7rem;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  color: #007acc;
+  border-left: 4px solid #007acc;
+  padding-left: 0.6rem;
+}
+
+.about-section p {
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+/* ===== List Styling ===== */
+.about-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.about-section li {
+  background: #f8faff;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about-section li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  background: #eef5ff;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
