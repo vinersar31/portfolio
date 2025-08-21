@@ -180,3 +180,19 @@
   background: linear-gradient(90deg, #f66, #667aff);
   transform: scale(1.05);
 }
+
+/* Private repo button variant */
+.btn-private {
+  background: linear-gradient(90deg, #6c757d, #495057); /* gray gradient */
+  color: #f8f9fa;
+  position: relative;
+}
+
+.btn-private::after {
+  content: " (Private)";
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 4px;
+  opacity: 0.85;
+}
+
