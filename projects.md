@@ -45,7 +45,7 @@ permalink: /projects.html
 
   <article class="project-card">
     <h3>
-      Jira &amp; Project Metrics
+      PulseBoard: Jira &amp; Project Metrics
       <small>(Master’s Degree – Project Management)</small>
     </h3>
     <p>
@@ -54,6 +54,12 @@ permalink: /projects.html
       Confluence, Excel, and manual entries. Insights are shown in
       Grafana dashboards powered by Prometheus for time-series analytics.
     </p>
+    <a class="btn btn-private" 
+     href="https://github.com/vinersar31/pulse_board"
+     target="_blank" rel="noopener noreferrer"
+     title="Private Repository (only accessible with permission)">
+    🔒 Private Repository
+    </a>
   </article>
 
 </section>
