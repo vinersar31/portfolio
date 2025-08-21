@@ -54,7 +54,7 @@ permalink: /projects.html
       Confluence, Excel, and manual entries. Insights are shown in
       Grafana dashboards powered by Prometheus for time-series analytics.
     </p>
-    <a class="btn btn-private" 
+    <a class="btn btn-private"
      href="https://github.com/vinersar31/pulse_board"
      target="_blank" rel="noopener noreferrer"
      title="Private Repository (only accessible with permission)">
