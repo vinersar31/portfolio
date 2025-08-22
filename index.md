@@ -78,5 +78,5 @@ title: Home
     </p>
   </div>
 
-  <img src="/assets/images/me.jpg" alt="Your photo" class="hero-image" />
+  <img src="assets/images/me.jpg" alt="Your photo" class="hero-image" />
 </section>
