@@ -1,8 +1,8 @@
 - title: Home
   url: /
-- title: About
-  url: /about.html
 - title: Projects
   url: /projects.html
 - title: CV
   url: /cv.html
+- title: About
+  url: /about.html
