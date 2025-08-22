@@ -1,3 +1,39 @@
+/* Footer */
+.site-footer {
+  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
+  color: #fff;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer-links {
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  margin: 0 0.75rem;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffd700; /* gold hover */
+}
+
 .site-nav {
   display: flex;
   justify-content: center; /* or 'flex-end' */
@@ -248,40 +284,4 @@ body {
 
 .cv-hero .btn:hover {
   background: #0d6efd;
-}
-
-/* Footer */
-.site-footer {
-  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
-  color: #fff;
-  padding: 2rem 1rem;
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-content p {
-  margin: 0;
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-.footer-links {
-  margin-top: 1rem;
-}
-
-.footer-links a {
-  margin: 0 0.75rem;
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #ffd700; /* gold hover */
 }
