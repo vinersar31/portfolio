@@ -4,6 +4,20 @@ title: Home
 ---
 
 <style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 6rem 1rem;
+    flex-wrap: wrap; /* keeps it responsive */
+  }
+
+  .hero-text {
+    max-width: 600px;
+    text-align: left;
+  }
+
   .hello {
     font-size: 6rem;
     font-weight: 900;
@@ -31,28 +45,38 @@ title: Home
   .hello .period { color: #ff4757; }    /* Static red period */
 
   .description {
-    font-size: 1.75rem;
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.5rem;
     line-height: 1.6;
     color: #555;
-    text-align: center;
   }
 
-  section {
-    padding: 6rem 1rem;
-    text-align: center;
+  .hero-image {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover {
+    transform: scale(1.05);
   }
 </style>
 
-<section>
-  <h1 class="hello" aria-label="Hello.">
-    <span class="h">H</span><span class="e">e</span><span class="l1">l</span><span class="l2">l</span><span class="o">o</span><span class="period">.</span>
-  </h1>
-  <p class="description">
-    I’m a software developer with a strong background in <strong>C++</strong> and
-    <strong>ADAS systems</strong>, focused on building reliable and performance-critical applications.<br />
-    I’m deeply passionate about <strong>artificial intelligence</strong>,
-    <strong>machine learning</strong>, and <strong>embedded systems</strong> — always exploring how these technologies can work together to solve real-world problems.
-  </p>
+<section class="hero">
+  <div class="hero-text">
+    <h1 class="hello" aria-label="Hello.">
+      <span class="h">H</span><span class="e">e</span><span class="l1">l</span><span class="l2">l</span><span class="o">o</span><span class="period">.</span>
+    </h1>
+    <p class="description">
+      I’m a software developer with a strong background in <strong>C++</strong> and
+      <strong>ADAS systems</strong>, focused on building reliable and performance-critical applications.<br />
+      I’m deeply passionate about <strong>artificial intelligence</strong>,
+      <strong>machine learning</strong>, and <strong>embedded systems</strong> — always exploring how these technologies can work together to solve real-world problems.
+    </p>
+  </div>
+
+  <img src="/assets/images/me.jpg" alt="Your photo" class="hero-image" />
 </section>

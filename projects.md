@@ -41,6 +41,12 @@ permalink: /projects.html
       could trade games. Built using <strong>Xamarin Forms</strong> and
       <strong>C#</strong>.
     </p>
+    <a class="btn btn-private"
+     href="https://github.com/vinersar31/Licenta-Ecommerce"
+     target="_blank" rel="noopener noreferrer"
+     title="Private Repository (only accessible with permission)">
+    🔒 View Repository
+    </a>
   </article>
 
   <article class="project-card">
