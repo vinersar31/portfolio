@@ -7,7 +7,6 @@
   color: #ddd; /* softer for dark mode look */
   line-height: 1.8;
   animation: fade-in 0.8s ease-in-out;
-
   background: rgb(255 255 255 / 5%);
   backdrop-filter: blur(12px);
   border-radius: 1rem;
@@ -20,11 +19,9 @@
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 800;
-
   background: linear-gradient(90deg, #ff4d4d, #4d79ff);
   background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent; /* replaces -webkit-text-fill-color */
   letter-spacing: 1px;
 }
 
@@ -32,11 +29,9 @@
   font-size: 1.8rem;
   margin: 2rem 0 1rem;
   font-weight: 700;
-
   background: linear-gradient(90deg, #ff4d4d, #4d79ff);
   background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* Text */
@@ -66,8 +61,8 @@
   left: 0;
   font-size: 1rem;
   background: linear-gradient(90deg, #ff4d4d, #4d79ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Animation */
