@@ -1,6 +1,8 @@
 {
   "attr-bans": ["align", "bgcolor", "border", "frameborder", "longdesc", "marginwidth", "marginheight"],
   "attr-name-style": "dash",
+  "class-style": "dash",
+  "id-class-style": "dash",
   "attr-no-dup": true,
   "attr-quote-style": "double",
   "doctype-first": true,
