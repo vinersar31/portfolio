@@ -1,0 +1,6 @@
+/* ===== Global Background ===== */
+body {
+  background: linear-gradient(135deg, #f0f4ff, #fdfdfd);
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  color: #222;
+}
