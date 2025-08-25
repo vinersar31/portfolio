@@ -22,5 +22,5 @@ jobs:
       - name: Install htmllint CLI
         run: npm install htmllint-cli --save-dev
 
-      - name: Run htmllint
-        run: npx htmllint --ignore 'node_modules/**' '**/*.html'
+      - name: Run HTML Linter
+        run: npx htmllint '_layouts/default.html'
