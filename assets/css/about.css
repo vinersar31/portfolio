@@ -37,33 +37,40 @@
 /* Text */
 .about-section p {
   margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  color: #ccc;
+  font-size: 1.1rem;
+  color: #444; /* darker, easier to read */
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* List styling */
 .about-section ul {
   list-style: none;
   padding-left: 0;
+  margin-top: 1rem;
 }
 
 .about-section li {
-  margin-bottom: 0.7rem;
-  padding-left: 1.6rem;
+  margin-bottom: 0.8rem;
+  padding-left: 1.8rem;
   position: relative;
   font-size: 1.05rem;
-  color: #eee;
+  color: #333; /* darker for readability */
+  line-height: 1.6;
 }
 
+/* Modern bullet icons */
 .about-section ul li::before {
-  content: "✦";
+  content: "▹"; /* sleek arrow-like bullet */
   position: absolute;
   left: 0;
-  font-size: 1rem;
-  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
-  background-clip: text;
-  color: transparent;
+  color: #ff4d4d; /* matches your gradient theme */
+  font-size: 1.1rem;
+  line-height: 1;
 }
+
 
 /* Animation */
 @keyframes fade-in {
