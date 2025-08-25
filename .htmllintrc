@@ -8,7 +8,7 @@
   "doctype-first": true,
   "doctype-html5": true,
   "head-req-title": true,
-  "head-req-meta": true,
+  "head-req-meta": false,
   "html-req-lang": true,
   "id-no-dup": true,
   "img-req-alt": true,

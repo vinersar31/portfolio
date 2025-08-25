@@ -23,4 +23,4 @@ jobs:
         run: npm install htmllint-cli --save-dev
 
       - name: Run htmllint
-        run: npx htmllint "**/*.html"
+        run: npx htmllint "**/*.html" "!node_modules/**"
