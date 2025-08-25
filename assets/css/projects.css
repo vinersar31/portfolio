@@ -72,7 +72,9 @@
   margin-bottom: 1rem;
   line-height: 1.6;
   background: linear-gradient(90deg, #ff4d4d, #4d79ff);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-background-clip: text;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-fill-color: transparent;
   opacity: 0.9;
 }
