@@ -6,26 +6,28 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-  <nav class="site-nav">
-    <ul>
-      {% for item in site.data.navigation %}
-        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
+  <div class="site-wrapper">
+    <nav class="site-nav">
+      <ul>
+        {% for item in site.data.navigation %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
 
-  <main>
-    {{ content }}
-  </main>
+    <main>
+      {{ content }}
+    </main>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <p>© 2025 Vinersar Dan-Ioan. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://github.com/vinersar31" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/dan-ioan-v-6b1220218/" target="_blank" rel="noopener">LinkedIn</a>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>© 2025 Vinersar Dan-Ioan. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://github.com/vinersar31" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/dan-ioan-v-6b1220218/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
