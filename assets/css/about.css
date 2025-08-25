@@ -1,57 +1,77 @@
 /* ===== About Page Styles ===== */
 .about-section {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2.5rem 1.5rem;
   font-family: Inter, sans-serif;
-  color: #333;
-  line-height: 1.7;
+  color: #ddd; /* softer for dark mode look */
+  line-height: 1.8;
   animation: fade-in 0.8s ease-in-out;
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgb(0 0 0 / 20%);
 }
 
+/* Headings */
 .about-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
   text-align: center;
-  background: linear-gradient(90deg, #007cf0, #00dfd8);
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent; /* replaces -webkit-text-fill-color */
+  letter-spacing: 1px;
 }
 
 .about-section h2 {
   font-size: 1.8rem;
   margin: 2rem 0 1rem;
-  color: #007cf0;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
+  background-clip: text;
+  color: transparent;
 }
 
+/* Text */
 .about-section p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: #ccc;
 }
 
+/* List styling */
 .about-section ul {
   list-style: none;
   padding-left: 0;
 }
 
 .about-section li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
+  margin-bottom: 0.7rem;
+  padding-left: 1.6rem;
   position: relative;
+  font-size: 1.05rem;
+  color: #eee;
 }
 
 .about-section ul li::before {
-  content: "✨";
+  content: "✦";
   position: absolute;
   left: 0;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #ff4d4d, #4d79ff);
+  background-clip: text;
+  color: transparent;
 }
 
+/* Animation */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
-
+  
   to {
     opacity: 1;
     transform: translateY(0);
