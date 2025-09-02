@@ -22,7 +22,6 @@ jobs:
             --verbose
             --no-progress
             --exclude '\{\{.*\}\}'
-            --exclude '\| *relative_url'
             --exclude-path '_layouts'
             **/*.md
             **/*.html
