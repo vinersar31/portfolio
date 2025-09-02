@@ -18,11 +18,11 @@ jobs:
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v2.5.0
         with:
-          args: >
+          args: |
             --verbose
             --no-progress
-            --exclude '\{\{.*\}\}'         # ignore all Liquid placeholders {{ ... }}
-            --exclude '\| *relative_url'   # specifically ignore {{ post.url | relative_url }}
-            --exclude-path '_layouts'      # ignore layout templates
-            '**/*.md'
-            '**/*.html'
+            --exclude '\{\{.*\}\}'
+            --exclude '\| *relative_url'
+            --exclude-path '_layouts'
+            **/*.md
+            **/*.html
