@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<article class="journal-post">
+  <h1 class="journal-title">{{ page.title }}</h1>
+  <p class="journal-meta">{{ page.date | date: "%B %d, %Y" }}</p>
+
+  <div class="journal-content">
+    {{ content }}
+  </div>
+</article>
