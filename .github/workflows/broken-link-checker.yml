@@ -1,4 +1,5 @@
 name: Broken Link Checker
+
 on:
   push:
     paths:
@@ -8,6 +9,7 @@ on:
     paths:
       - '**/*.md'
       - '**/*.html'
+
 jobs:
   linkchecker:
     runs-on: ubuntu-latest
@@ -19,7 +21,8 @@ jobs:
           args: >
             --verbose
             --no-progress
-            --exclude '\{\{.*\}\}'
-            --exclude-path '_layouts'
+            --exclude '\{\{.*\}\}'         # ignore all Liquid placeholders {{ ... }}
+            --exclude '\| *relative_url'   # specifically ignore {{ post.url | relative_url }}
+            --exclude-path '_layouts'      # ignore layout templates
             '**/*.md'
             '**/*.html'
