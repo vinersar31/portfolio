@@ -68,4 +68,16 @@ permalink: /projects.html
     </a>
   </article>
 
+
+  <article class="project-card">
+    <h3>MCP Servers</h3>
+    <p>
+      A collection of Model Context Protocol (MCP) servers for AI model serving, experimentation, and integration.
+    </p>
+    <a class="btn" href="https://github.com/vinersar31/mcp_servers"
+       target="_blank" rel="noopener noreferrer">
+      🔗 View Repository
+    </a>
+  </article>
+
 </section>
