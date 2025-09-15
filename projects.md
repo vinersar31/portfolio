@@ -68,7 +68,6 @@ permalink: /projects.html
     </a>
   </article>
 
-
   <article class="project-card">
     <h3>MCP Servers</h3>
     <p>
