@@ -79,4 +79,15 @@ permalink: /projects.html
     </a>
   </article>
 
+  <article class="project-card">
+    <h3>Spec Driven AI Agents</h3>
+    <p>
+      Trying out this new methodology of working with AI Agents, focusing on specification-driven development and experimentation.
+    </p>
+    <a class="btn" href="https://github.com/vinersar31/spec_driven_ai_agents"
+       target="_blank" rel="noopener noreferrer">
+      🔗 View Repository
+    </a>
+  </article>
+
 </section>
