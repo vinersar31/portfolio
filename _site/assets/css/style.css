@@ -1,0 +1,16 @@
+/* style.css */
+
+/* Base + globals */
+@import url("base.css");
+
+/* Layout */
+@import url("nav.css");
+@import url("footer.css");
+
+/* Pages */
+@import url("about.css");
+@import url("projects.css");
+@import url("cv.css");
+
+/* Shared components */
+@import url("components.css");
