@@ -42,7 +42,7 @@ permalink: /projects.html
       <strong>C#</strong>.
     </p>
     <a class="btn btn-private"
-     href="https://github.com/vinersar31/Licenta-Ecommerce"
+     href="#"
      target="_blank" rel="noopener noreferrer"
      title="Private Repository (only accessible with permission)">
     🔒 View Repository
@@ -61,7 +61,7 @@ permalink: /projects.html
       Grafana dashboards powered by Prometheus for time-series analytics.
     </p>
     <a class="btn btn-private"
-     href="https://github.com/vinersar31/pulse_board"
+     href="#"
      target="_blank" rel="noopener noreferrer"
      title="Private Repository (only accessible with permission)">
     🔒 View Repository
@@ -100,7 +100,6 @@ permalink: /projects.html
       🔗 View Repository
     </a>
   </article>
-
 
   <article class="project-card">
     <h3>Trading Bot</h3>
