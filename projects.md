@@ -90,4 +90,15 @@ permalink: /projects.html
     </a>
   </article>
 
+  <article class="project-card">
+    <h3>Istaris</h3>
+    <p>
+      AI-powered digital employees that work 24/7 to automate your entire workflow.
+    </p>
+    <a class="btn" href="https://github.com/vinersar31/istaris"
+       target="_blank" rel="noopener noreferrer">
+      🔗 View Repository
+    </a>
+  </article>
+
 </section>
