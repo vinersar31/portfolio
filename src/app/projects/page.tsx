@@ -3,6 +3,18 @@ import { ExternalLink, Lock } from "lucide-react";
 export default function Projects() {
   const projects = [
     {
+      title: "EU Compliance Engine",
+      description: "An engine for processing and analyzing EU compliance data and regulations.",
+      url: "https://github.com/vinersar31/EU-compliance-engine",
+      isPrivate: false,
+    },
+    {
+      title: "Trade Bot",
+      description: "An automated trading bot for cryptocurrency or stock markets.",
+      url: "https://github.com/vinersar31/trade_bot",
+      isPrivate: true,
+    },
+    {
       title: "AI Playground",
       description: "A playground for experimenting with AI models and tools.",
       url: "https://github.com/vinersar31/ai_playground",
