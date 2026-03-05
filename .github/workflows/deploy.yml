@@ -2,7 +2,7 @@ name: Deploy Next.js site to Pages
 
 on:
   push:
-    branches: ["main", "master", "migrate-jekyll-to-nextjs-4322699329151783876"]
+    branches: ["main", "master"]
   workflow_dispatch:
 
 permissions:
