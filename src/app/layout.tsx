@@ -3,6 +3,7 @@ import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" });
@@ -31,6 +32,7 @@ export default function RootLayout({
             <main className="flex-1 container mx-auto max-w-4xl p-6">
               {children}
             </main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
