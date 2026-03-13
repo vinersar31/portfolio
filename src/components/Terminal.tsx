@@ -14,19 +14,14 @@ const files: Record<string, React.ReactNode> = {
   ),
   "projects.txt": (
     <div className="space-y-2">
-      <p>here are some of my recent projects:</p>
-      <ul className="list-inside list-disc pl-4 text-primary/80">
-        <li>ADAS Perception System (C++)</li>
-        <li>Embedded ML Controller (Rust)</li>
-        <li>Portfolio Website (Next.js)</li>
-      </ul>
-      <p>type <span className="text-primary font-bold">cat links.txt</span> to see my github for more.</p>
+      <p>i have worked on several personal and academic projects. to see them all, please visit the projects page.</p>
+      <p>type <span className="text-primary font-bold">cd projects</span> to view them or check out my github <span className="text-primary font-bold">cat links.txt</span>.</p>
     </div>
   ),
-  "skills.txt": (
+  "cv.txt": (
     <div className="space-y-2">
-      <p><span className="text-green-400">languages:</span> C++, Rust, Python, TypeScript</p>
-      <p><span className="text-green-400">technologies:</span> Embedded Systems, ROS, Linux, Machine Learning</p>
+      <p>to see a snapshot of my professional background in software development, including my experience, education, and skills.</p>
+      <p>type <span className="text-primary font-bold">cd cv</span> to view and download my curriculum vitae.</p>
     </div>
   ),
   "links.txt": (
@@ -67,7 +62,7 @@ export function Terminal() {
   const router = useRouter();
 
   // Auto-typing sequence state
-  const sequence = useMemo(() => ["cat about.txt", "cat skills.txt", "cat projects.txt", "cat links.txt"], []);
+  const sequence = useMemo(() => ["cat about.txt", "cat cv.txt", "cat projects.txt", "cat links.txt"], []);
   const [seqIndex, setSeqIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
