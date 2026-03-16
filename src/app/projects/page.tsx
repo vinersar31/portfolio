@@ -67,9 +67,9 @@ export default function Projects() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <article
-            key={index}
+            key={project.url}
             className="group relative flex flex-col justify-between p-6 bg-card border border-border rounded-xl transition-all hover:shadow-lg dark:hover:border-red-500/50"
           >
             <div className="space-y-4 mb-6">
