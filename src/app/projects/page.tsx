@@ -41,9 +41,9 @@ export default function Projects() {
       isPrivate: true,
     },
     {
-      title: "MCP Servers",
+      title: "MCP",
       description: "A collection of Model Context Protocol (MCP) servers for AI model serving, experimentation, and integration.",
-      url: "https://github.com/vinersar31/mcp_servers",
+      url: "https://github.com/vinersar31/mcp",
       isPrivate: false,
     },
     {
