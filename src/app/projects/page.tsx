@@ -12,7 +12,7 @@ export default function Projects() {
       title: "Trade Bot",
       description: "An automated trading bot for cryptocurrency or stock markets.",
       url: "https://github.com/vinersar31/trading_bot",
-      isPrivate: true,
+      isPrivate: false,
     },
     {
       title: "AI Playground",
