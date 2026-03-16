@@ -25,10 +25,10 @@ export default function About() {
       <div className="pt-8">
         <h2 className="text-3xl font-semibold mb-6 font-mono lowercase"><span className="text-red-500">/</span> skills & tech</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">⚡</span> c++, python, typescript</li>
+          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">⚡</span> c++, python, rust</li>
           <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🧠</span> ai, llms, rag</li>
           <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">⚛️</span> react, next.js</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🐳</span> docker, aws, git</li>
+          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🐳</span> docker, kubernetes, aws</li>
         </ul>
       </div>
 
