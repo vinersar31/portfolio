@@ -13,8 +13,23 @@ const navItems = [
   { name: "cv", href: "/cv" },
 ]
 
-export function Navbar() {
+
+function NavLink({ href, name, className = "" }: { href: string; name: string; className?: string }) {
   const pathname = usePathname()
+  return (
+    <Link
+      href={href}
+      className={`transition-colors hover:text-foreground/80 flex items-center ${className} ${
+        pathname === href ? "text-foreground font-semibold" : "text-foreground/60"
+      }`.trim()}
+    >
+      <span className="text-red-500 mr-1">/</span>
+      {name}
+    </Link>
+  )
+}
+
+export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
@@ -31,32 +46,14 @@ export function Navbar() {
           </Link>
           <div className="hidden md:flex gap-6">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`transition-colors hover:text-foreground/80 flex items-center ${
-                  pathname === item.href ? "text-foreground font-semibold" : "text-foreground/60"
-                }`}
-              >
-                <span className="text-red-500 mr-1">/</span>
-                {item.name}
-              </Link>
+              <NavLink key={item.href} href={item.href} name={item.name} />
             ))}
           </div>
         </div>
         <div className="flex items-center space-x-4">
           <div className="md:hidden flex gap-4 mr-2">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm transition-colors hover:text-foreground/80 flex items-center ${
-                  pathname === item.href ? "text-foreground font-semibold" : "text-foreground/60"
-                }`}
-              >
-                <span className="text-red-500 mr-1">/</span>
-                {item.name}
-              </Link>
+              <NavLink key={item.href} href={item.href} name={item.name} className="text-sm" />
             ))}
           </div>
           <button
