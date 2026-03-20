@@ -178,7 +178,7 @@ export function Terminal() {
       case "cat":
         if (!arg) {
           output = <span className="text-red-500">cat: missing file operand</span>;
-        } else if (files[arg]) {
+        } else if (Object.prototype.hasOwnProperty.call(files, arg)) {
           output = <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div>;
         } else {
           output = <span className="text-red-500">cat: {arg}: No such file or directory</span>;
