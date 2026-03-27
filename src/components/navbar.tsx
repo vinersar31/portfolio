@@ -13,6 +13,21 @@ const navItems = [
   { name: "cv", href: "/cv" },
 ]
 
+
+function NavLink({ href, name, pathname, className = "" }: { href: string; name: string; pathname: string; className?: string }) {
+  return (
+    <Link
+      href={href}
+      className={`${className} transition-colors hover:text-foreground/80 flex items-center ${
+        pathname === href ? "text-foreground font-semibold" : "text-foreground/60"
+      }`.trim()}
+    >
+      <span className="text-red-500 mr-1">/</span>
+      {name}
+    </Link>
+  )
+}
+
 export function Navbar() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
@@ -31,32 +46,14 @@ export function Navbar() {
           </Link>
           <div className="hidden md:flex gap-6">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`transition-colors hover:text-foreground/80 flex items-center ${
-                  pathname === item.href ? "text-foreground font-semibold" : "text-foreground/60"
-                }`}
-              >
-                <span className="text-red-500 mr-1">/</span>
-                {item.name}
-              </Link>
+              <NavLink key={item.href} href={item.href} name={item.name} pathname={pathname} />
             ))}
           </div>
         </div>
         <div className="flex items-center space-x-4">
           <div className="md:hidden flex gap-4 mr-2">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm transition-colors hover:text-foreground/80 flex items-center ${
-                  pathname === item.href ? "text-foreground font-semibold" : "text-foreground/60"
-                }`}
-              >
-                <span className="text-red-500 mr-1">/</span>
-                {item.name}
-              </Link>
+              <NavLink key={item.href} href={item.href} name={item.name} pathname={pathname} className="text-sm" />
             ))}
           </div>
           <button
