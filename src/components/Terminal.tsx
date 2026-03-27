@@ -52,6 +52,48 @@ type HistoryEntry = {
   output: React.ReactNode;
 };
 
+type CommandContext = {
+  arg: string | undefined;
+  router: { push: (url: string) => void };
+  setHistory: React.Dispatch<React.SetStateAction<HistoryEntry[]>>;
+};
+
+type CommandResult = {
+  output?: React.ReactNode;
+  clear?: boolean;
+};
+
+const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
+  help: () => ({ output: commandsHelp }),
+  ls: () => ({
+    output: (
+      <div className="flex gap-6 text-blue-400">
+        {Object.keys(files).map((file) => (
+          <span key={file}>{file}</span>
+        ))}
+      </div>
+    ),
+  }),
+  cat: ({ arg }) => {
+    if (!arg) return { output: <span className="text-red-500">cat: missing file operand</span> };
+    if (files[arg]) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
+    return { output: <span className="text-red-500">cat: {arg}: No such file or directory</span> };
+  },
+  clear: ({ setHistory }) => {
+    setHistory([]);
+    return { clear: true };
+  },
+  whoami: () => ({ output: "vinersar31" }),
+  cd: ({ arg, router }) => {
+    if (!arg || arg === "~") return { output: null };
+    if (arg === "about" || arg === "projects" || arg === "cv") {
+      router.push(`/${arg}`);
+      return { output: `Navigating to /${arg}...` };
+    }
+    return { output: <span className="text-red-500">cd: {arg}: No such file or directory</span> };
+  },
+};
+
 export function Terminal() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState("");
@@ -160,48 +202,15 @@ export function Terminal() {
     const baseCommand = parts[0]?.toLowerCase();
     const arg = parts[1];
 
-    let output: React.ReactNode = null;
+    if (!baseCommand) return;
 
-    switch (baseCommand) {
-      case "help":
-        output = commandsHelp;
-        break;
-      case "ls":
-        output = (
-          <div className="flex gap-6 text-blue-400">
-            {Object.keys(files).map((file) => (
-              <span key={file}>{file}</span>
-            ))}
-          </div>
-        );
-        break;
-      case "cat":
-        if (!arg) {
-          output = <span className="text-red-500">cat: missing file operand</span>;
-        } else if (files[arg]) {
-          output = <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div>;
-        } else {
-          output = <span className="text-red-500">cat: {arg}: No such file or directory</span>;
-        }
-        break;
-      case "clear":
-        setHistory([]);
-        return; // Don't add clear to history
-      case "whoami":
-        output = "vinersar31";
-        break;
-      case "cd":
-        if (!arg || arg === "~") {
-             output = null;
-        } else if(arg === "about" || arg === "projects" || arg === "cv") {
-            router.push(`/${arg}`);
-            output = `Navigating to /${arg}...`;
-        } else {
-             output = <span className="text-red-500">cd: {arg}: No such file or directory</span>;
-        }
-        break;
-      default:
-        output = <span className="text-red-500">{baseCommand}: command not found</span>;
+    const handler = commands[baseCommand];
+    const result = handler
+      ? handler({ arg, router, setHistory })
+      : { output: <span className="text-red-500">{baseCommand}: command not found</span> } as CommandResult;
+
+    if (result.clear) {
+      return; // History already cleared by handler, don't add the clear command to history
     }
 
     setHistory((prev) => [
@@ -209,7 +218,7 @@ export function Terminal() {
       {
         id: Date.now(),
         command: trimmedCmd,
-        output,
+        output: result.output,
       },
     ]);
   };
