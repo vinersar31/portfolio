@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 // Define the "file system" content
@@ -93,6 +93,8 @@ const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
     return { output: <span className="text-red-500">cd: {arg}: No such file or directory</span> };
   },
 };
+const AUTO_TYPE_SEQUENCE = ["cat about.txt", "cat cv.txt", "cat projects.txt", "cat links.txt"];
+
 
 export function Terminal() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -103,7 +105,7 @@ export function Terminal() {
   const router = useRouter();
 
   // Auto-typing sequence state
-  const sequence = useMemo(() => ["cat about.txt", "cat cv.txt", "cat projects.txt", "cat links.txt"], []);
+
   const [seqIndex, setSeqIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -142,7 +144,7 @@ export function Terminal() {
 
     let timeout: NodeJS.Timeout;
 
-    const currentCommand = sequence[seqIndex];
+    const currentCommand = AUTO_TYPE_SEQUENCE[seqIndex];
 
     if (isPaused) {
       // Pause after typing the full command before deleting it
@@ -162,7 +164,7 @@ export function Terminal() {
         // By changing seqIndex inside a setTimeout, we break the infinite synchronous render
         timeout = setTimeout(() => {
           setIsDeleting(false);
-          setSeqIndex((prev) => (prev + 1) % sequence.length);
+          setSeqIndex((prev) => (prev + 1) % AUTO_TYPE_SEQUENCE.length);
         }, 0);
       }
     } else {
@@ -182,7 +184,7 @@ export function Terminal() {
     }
 
     return () => clearTimeout(timeout);
-  }, [mode, seqIndex, charIndex, isDeleting, isPaused, sequence]);
+  }, [mode, seqIndex, charIndex, isDeleting, isPaused]);
 
   // Execute a command
   const executeCommand = (cmd: string) => {
