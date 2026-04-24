@@ -1,0 +1,5 @@
+⚡ Optimize Terminal cursor to use CSS animation
+
+💡 What: Replaced the JavaScript `setInterval` based cursor blinking effect in the `Terminal` component with Tailwind CSS's `animate-pulse` class.
+🎯 Why: The previous implementation used a `useEffect` hook to toggle a `cursorVisible` state variable every 500ms. This caused the entire `Terminal` component to re-render twice a second.
+📊 Measured Improvement: The performance gain mathematically eliminates 100% of cursor-related state updates. The idle re-render rate for the cursor drops from 120 per minute to 0, completely offloading the visual blinking effect to the browser's CSS engine.
