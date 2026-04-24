@@ -98,7 +98,6 @@ export function Terminal() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState("");
   const [mode, setMode] = useState<"auto" | "interactive">("auto");
-  const [cursorVisible, setCursorVisible] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -109,14 +108,6 @@ export function Terminal() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-
-  // Blinking cursor effect
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setCursorVisible((v) => !v);
-    }, 500);
-    return () => clearInterval(cursorInterval);
-  }, []);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -284,7 +275,7 @@ export function Terminal() {
               {input}
               {/* Blinking Cursor */}
               <span
-                className={`inline-block w-[8px] h-[1em] ml-[1px] ${cursorVisible ? 'bg-zinc-300' : 'bg-transparent'}`}
+                className="inline-block w-[8px] h-[1em] ml-[1px] bg-zinc-300 animate-pulse"
                 style={{ verticalAlign: 'middle' }}
               ></span>
             </span>
