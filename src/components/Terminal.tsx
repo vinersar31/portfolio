@@ -26,8 +26,8 @@ const files: Record<string, React.ReactNode> = {
   ),
   "links.txt": (
     <div className="space-y-2">
-      <p>github: <a href="https://github.com/vinersar" target="_blank" className="text-blue-400 hover:underline">github.com/vinersar</a></p>
-      <p>linkedin: <a href="https://linkedin.com/in/vinersar" target="_blank" className="text-blue-400 hover:underline">linkedin.com/in/vinersar</a></p>
+      <p>github: <a href="https://github.com/vinersar" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">github.com/vinersar</a></p>
+      <p>linkedin: <a href="https://linkedin.com/in/vinersar" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">linkedin.com/in/vinersar</a></p>
       <p>email: <a href="mailto:vinersar31@example.com" className="text-blue-400 hover:underline">vinersar31@example.com</a></p>
     </div>
   )
