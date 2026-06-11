@@ -57,6 +57,12 @@ const projects = [
     url: "https://github.com/vinersar31/istaris",
     isPrivate: false,
   },
+  {
+    title: "Building with Claude API",
+    description: "Simple Jupyter notebooks for learning how to use the Anthropic Claude API with Python.",
+    url: "https://github.com/vinersar31/building_with_claude_API",
+    isPrivate: false,
+  },
 ].map((p) => ({ ...p, title: p.title.toLowerCase(), description: p.description.toLowerCase() }));
 
 export default function Projects() {
