@@ -39,4 +39,13 @@ describe('Projects Page', () => {
     const mcpLink = links.find(l => l.getAttribute('href') === 'https://github.com/vinersar31/mcp');
     expect(mcpLink).toBeDefined();
   });
+
+  it('has the correct updated url for building_with_claude_API', () => {
+    render(<Projects />);
+
+    // Test specifically for building_with_claude_API URL
+    const links = screen.getAllByRole('link', { name: /view repository/i });
+    const claudeApiLink = links.find(l => l.getAttribute('href') === 'https://github.com/vinersar31/building_with_claude_API');
+    expect(claudeApiLink).toBeDefined();
+  });
 });
