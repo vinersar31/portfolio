@@ -230,11 +230,11 @@ export function Terminal() {
 
   return (
     <div
-      className="w-full h-[65vh] min-h-[400px] max-h-[700px] bg-zinc-950 text-zinc-300 font-mono p-1 rounded-xl shadow-2xl overflow-hidden flex flex-col border border-zinc-800 relative group"
+      className="w-full h-[65vh] min-h-[400px] max-h-[700px] bg-[#0d1117] dark:bg-[#0d1117] text-zinc-300 font-mono rounded-xl shadow-2xl shadow-black/40 overflow-hidden flex flex-col border border-white/10 dark:border-white/10 relative group transition-all duration-300 hover:shadow-primary/5"
       onClick={handleTerminalClick}
     >
       {/* Fake Window Header */}
-      <div className="flex items-center px-4 py-3 bg-zinc-900 border-b border-zinc-800 rounded-t-lg shrink-0">
+      <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-white/5 shrink-0 relative z-10">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>

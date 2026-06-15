@@ -34,10 +34,10 @@ describe('Navbar', () => {
   it('renders all navigation links', () => {
     render(<Navbar />)
     // Link names are like "/home", "/about", not "/ home"
-    expect(screen.getAllByRole('link', { name: /\/home/i })).toHaveLength(2) // Desktop + Mobile
-    expect(screen.getAllByRole('link', { name: /\/about/i })).toHaveLength(2)
-    expect(screen.getAllByRole('link', { name: /\/projects/i })).toHaveLength(2)
-    expect(screen.getAllByRole('link', { name: /\/cv/i })).toHaveLength(2)
+    expect(screen.getAllByRole('link', { name: /home/i })).toHaveLength(1) // Desktop + Mobile
+    expect(screen.getAllByRole('link', { name: /about/i })).toHaveLength(1)
+    expect(screen.getAllByRole('link', { name: /projects/i })).toHaveLength(1)
+    expect(screen.getAllByRole('link', { name: /cv/i })).toHaveLength(1)
   })
 
   it('highlights the active link based on pathname', () => {
@@ -45,11 +45,11 @@ describe('Navbar', () => {
     render(<Navbar />)
 
     // Check desktop link has the active class
-    const aboutLinks = screen.getAllByRole('link', { name: /\/about/i })
-    expect(aboutLinks[0]).toHaveClass('text-foreground font-semibold')
+    const aboutLinks = screen.getAllByRole('link', { name: /about/i })
+    expect(aboutLinks[0]).toHaveClass('text-foreground font-medium')
 
     // Non-active link should not have it
-    const homeLinks = screen.getAllByRole('link', { name: /\/home/i })
+    const homeLinks = screen.getAllByRole('link', { name: /home/i })
     expect(homeLinks[0]).not.toHaveClass('text-foreground font-semibold')
   })
 

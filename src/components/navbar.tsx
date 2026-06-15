@@ -13,17 +13,29 @@ const navItems = [
   { name: "about", href: "/about" },
 ]
 
-
 function NavLink({ href, name, pathname, className = "" }: { href: string; name: string; pathname: string; className?: string }) {
+  const isActive = pathname === href;
+
   return (
     <Link
       href={href}
-      className={`${className} transition-colors hover:text-foreground/80 flex items-center ${
-        pathname === href ? "text-foreground font-semibold" : "text-foreground/60"
-      }`.trim()}
+      className={`
+        ${className}
+        transition-all duration-300 ease-in-out
+        relative flex items-center px-3 py-1.5 rounded-full
+        ${isActive
+          ? "text-foreground font-medium bg-foreground/5 dark:bg-foreground/10"
+          : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+        }
+      `.trim()}
     >
-      <span className="text-red-500 mr-1">/</span>
-      {name}
+      {/* Subtle indicator dot for active state */}
+      {isActive && (
+        <span className="absolute left-1 h-1.5 w-1.5 rounded-full bg-red-500 mr-1.5 hidden md:block animate-fade-in-up" style={{ animationDuration: '0.3s' }}></span>
+      )}
+      <span className={`md:ml-2 font-mono text-sm`}>
+        {name}
+      </span>
     </Link>
   )
 }
@@ -32,33 +44,53 @@ export function Navbar() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 font-mono">
-      <div className="container mx-auto max-w-4xl px-4 flex h-16 items-center justify-between">
-        <div className="flex gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="inline-block font-bold text-lg">vinersar <span className="text-red-500">/</span></span>
+    <nav className="fixed top-0 z-50 w-full pt-4 pb-2 px-4 transition-all duration-300 flex justify-center">
+      <div
+        className={`
+          flex h-14 items-center justify-between w-full max-w-3xl px-4 md:px-6 rounded-full transition-all duration-500
+          ${scrolled
+            ? "bg-background/70 backdrop-blur-lg border border-border shadow-lg shadow-black/5 dark:shadow-white/5"
+            : "bg-transparent border border-transparent"
+          }
+        `}
+      >
+        <div className="flex gap-6 md:gap-8 items-center">
+          <Link href="/" className="flex items-center group">
+            <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-foreground text-background mr-3 transition-transform group-hover:scale-105 group-hover:rotate-3">
+              <span className="font-mono font-bold text-lg leading-none mt-0.5">v</span>
+            </div>
+            <span className="hidden sm:inline-block font-sans font-semibold text-lg tracking-tight">
+              vinersar<span className="text-red-500 font-mono ml-1 animate-pulse">_</span>
+            </span>
           </Link>
-          <div className="hidden md:flex gap-6">
+        </div>
+
+        <div className="flex items-center space-x-1 md:space-x-2">
+          <div className="flex gap-1">
             {navItems.map((item) => (
               <NavLink key={item.href} href={item.href} name={item.name} pathname={pathname} />
             ))}
           </div>
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="md:hidden flex gap-4 mr-2">
-            {navItems.map((item) => (
-              <NavLink key={item.href} href={item.href} name={item.name} pathname={pathname} className="text-sm" />
-            ))}
-          </div>
+
+          <div className="h-6 w-px bg-border mx-2"></div>
+
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/5 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
             aria-label="Toggle theme"
           >
             {mounted && theme === "dark" ? (
