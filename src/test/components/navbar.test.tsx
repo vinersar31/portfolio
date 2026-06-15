@@ -23,7 +23,7 @@ describe('Navbar', () => {
     vi.mocked(useTheme).mockReturnValue({
       theme: 'dark',
       setTheme: mockSetTheme,
-    } as any)
+    } as unknown as ReturnType<typeof useTheme>)
   })
 
   it('renders brand name correctly', () => {
