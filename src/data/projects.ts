@@ -1,0 +1,64 @@
+export const projects = [
+  {
+    title: "pulseboard: jira & project metrics",
+    badge: "Master's Degree",
+    description: "developed as part of my master's degree in project management. this project collects and visualizes agile-related data from jira, confluence, excel, and manual entries. insights are shown in grafana dashboards powered by prometheus for time-series analytics.",
+    url: "https://github.com/vinersar31/pulse_board",
+    isPrivate: true,
+  },
+  {
+    title: "ecommerce mobile app",
+    badge: "Bachelor's Degree",
+    description: "created an ecommerce mobile app for my bachelor's degree where users could trade games. built using xamarin forms and c#.",
+    url: "https://github.com/vinersar31/Licenta-Ecommerce",
+    isPrivate: true,
+  },
+  {
+    title: "eu compliance engine",
+    description: "an engine for processing and analyzing eu compliance data and regulations.",
+    url: "https://github.com/vinersar31/EU-compliance-engine",
+    isPrivate: false,
+  },
+  {
+    title: "trade bot",
+    description: "an automated trading bot for cryptocurrency or stock markets.",
+    url: "https://github.com/vinersar31/trading_bot",
+    isPrivate: false,
+  },
+  {
+    title: "ai playground",
+    description: "a playground for experimenting with ai models and tools.",
+    url: "https://github.com/vinersar31/ai_playground",
+    isPrivate: false,
+  },
+  {
+    title: "esp32 playground",
+    description: "a playground for experimenting with the esp32 microcontroller and learning how to control electronics like leds, sensors, and more.",
+    url: "https://github.com/vinersar31/esp32_playground",
+    isPrivate: false,
+  },
+  {
+    title: "mcp",
+    description: "a collection of model context protocol (mcp) servers for ai model serving, experimentation, and integration.",
+    url: "https://github.com/vinersar31/mcp",
+    isPrivate: false,
+  },
+  {
+    title: "spec driven ai agents",
+    description: "trying out this new methodology of working with ai agents, focusing on specification-driven development and experimentation.",
+    url: "https://github.com/vinersar31/spec_driven_ai_agents",
+    isPrivate: false,
+  },
+  {
+    title: "istaris",
+    description: "ai-powered digital employees that work 24/7 to automate your entire workflow.",
+    url: "https://github.com/vinersar31/istaris",
+    isPrivate: false,
+  },
+  {
+    title: "building with claude api",
+    description: "simple jupyter notebooks for learning how to use the anthropic claude api with python.",
+    url: "https://github.com/vinersar31/building_with_claude_API",
+    isPrivate: false,
+  },
+];
