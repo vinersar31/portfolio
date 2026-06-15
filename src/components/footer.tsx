@@ -5,31 +5,41 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 font-mono mt-auto py-6 text-sm">
-      <div className="container mx-auto max-w-4xl px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="text-foreground/60 flex items-center">
-          <span className="text-red-500 mr-2">©</span>
-          <span>{currentYear} vinersar dan-ioan</span>
-        </div>
+    <footer className="w-full mt-auto py-8">
+      <div className="container mx-auto max-w-4xl px-4 flex flex-col items-center justify-center gap-6">
+        <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-border to-transparent opacity-50"></div>
+
         <div className="flex gap-6">
           <a
             href="https://github.com/vinersar31"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-foreground/60 hover:text-foreground transition-colors"
+            className="group flex items-center justify-center h-10 w-10 rounded-full bg-secondary/50 border border-transparent hover:border-border hover:bg-secondary transition-all duration-300 hover:-translate-y-1"
+            aria-label="GitHub"
           >
-            <Github className="h-4 w-4" />
-            <span>github</span>
+            <Github className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
           </a>
           <a
             href="https://www.linkedin.com/in/dan-ioan-v-6b1220218/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-foreground/60 hover:text-foreground transition-colors"
+            className="group flex items-center justify-center h-10 w-10 rounded-full bg-secondary/50 border border-transparent hover:border-border hover:bg-secondary transition-all duration-300 hover:-translate-y-1"
+            aria-label="LinkedIn"
           >
-            <Linkedin className="h-4 w-4" />
-            <span>linkedin</span>
+            <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-[#0A66C2] dark:group-hover:text-[#3888FF] transition-colors" />
           </a>
+          {/* <a
+            href="mailto:contact@example.com"
+            className="group flex items-center justify-center h-10 w-10 rounded-full bg-secondary/50 border border-transparent hover:border-border hover:bg-secondary transition-all duration-300 hover:-translate-y-1"
+            aria-label="Email"
+          >
+            <Mail className="h-5 w-5 text-muted-foreground group-hover:text-red-500 transition-colors" />
+          </a> */}
+        </div>
+
+        <div className="text-muted-foreground text-sm font-mono flex items-center">
+          <span className="text-primary mr-2 opacity-80">©</span>
+          <span className="tracking-tight">{currentYear} vinersar dan-ioan</span>
         </div>
       </div>
     </footer>
