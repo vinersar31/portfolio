@@ -14,7 +14,7 @@ describe('Terminal', () => {
     vi.clearAllMocks()
     vi.mocked(useRouter).mockReturnValue({
       push: mockPush,
-    } as any)
+    } as unknown as ReturnType<typeof useRouter>)
 
     // Mock scrollIntoView
     Element.prototype.scrollIntoView = vi.fn()

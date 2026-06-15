@@ -2,6 +2,20 @@ import { ExternalLink, Lock } from "lucide-react";
 
 const projects = [
   {
+    title: "PulseBoard: Jira & Project Metrics",
+    badge: "Master's Degree",
+    description: "Developed as part of my master's degree in Project Management. This project collects and visualizes Agile-related data from Jira, Confluence, Excel, and manual entries. Insights are shown in Grafana dashboards powered by Prometheus for time-series analytics.",
+    url: "https://github.com/vinersar31/pulse_board",
+    isPrivate: true,
+  },
+  {
+    title: "Ecommerce Mobile App",
+    badge: "Bachelor's Degree",
+    description: "Created an ecommerce mobile app for my bachelor's degree where users could trade games. Built using Xamarin Forms and C#.",
+    url: "https://github.com/vinersar31/Licenta-Ecommerce",
+    isPrivate: true,
+  },
+  {
     title: "EU Compliance Engine",
     description: "An engine for processing and analyzing EU compliance data and regulations.",
     url: "https://github.com/vinersar31/EU-compliance-engine",
@@ -24,20 +38,6 @@ const projects = [
     description: "A playground for experimenting with the ESP32 microcontroller and learning how to control electronics like LEDs, sensors, and more.",
     url: "https://github.com/vinersar31/esp32_playground",
     isPrivate: false,
-  },
-  {
-    title: "PulseBoard: Jira & Project Metrics",
-    badge: "Master's Degree",
-    description: "Developed as part of my master's degree in Project Management. This project collects and visualizes Agile-related data from Jira, Confluence, Excel, and manual entries. Insights are shown in Grafana dashboards powered by Prometheus for time-series analytics.",
-    url: "https://github.com/vinersar31/pulse_board",
-    isPrivate: true,
-  },
-  {
-    title: "Ecommerce Mobile App",
-    badge: "Bachelor's Degree",
-    description: "Created an ecommerce mobile app for my bachelor's degree where users could trade games. Built using Xamarin Forms and C#.",
-    url: "https://github.com/vinersar31/Licenta-Ecommerce",
-    isPrivate: true,
   },
   {
     title: "MCP",
