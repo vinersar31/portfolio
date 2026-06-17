@@ -16,9 +16,10 @@ describe('Projects Page', () => {
     const links = screen.getAllByRole('link', { name: /view repository/i });
 
     // Ensure all links start with https://github.com/vinersar31/
+    const githubUrlRegex = /^https:\/\/github\.com\/vinersar31\/.+/;
     for (const link of links) {
       const href = link.getAttribute('href');
-      expect(href).toMatch(/^https:\/\/github\.com\/vinersar31\/.+/);
+      expect(href).toMatch(githubUrlRegex);
     }
   });
 
