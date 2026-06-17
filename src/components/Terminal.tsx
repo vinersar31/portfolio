@@ -52,6 +52,8 @@ type HistoryEntry = {
   output: React.ReactNode;
 };
 
+const ALLOWED_ROUTES = new Set(["about", "projects", "cv"]);
+
 type CommandContext = {
   arg: string | undefined;
   router: { push: (url: string) => void };
@@ -86,7 +88,7 @@ const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   whoami: () => ({ output: "vinersar31" }),
   cd: ({ arg, router }) => {
     if (!arg || arg === "~") return { output: null };
-    if (arg === "about" || arg === "projects" || arg === "cv") {
+    if (ALLOWED_ROUTES.has(arg)) {
       router.push(`/${arg}`);
       return { output: `Navigating to /${arg}...` };
     }
