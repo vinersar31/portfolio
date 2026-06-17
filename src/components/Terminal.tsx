@@ -63,14 +63,16 @@ type CommandResult = {
   clear?: boolean;
 };
 
+const FILE_ELEMENTS = Object.keys(files).map((file) => (
+  <span key={file}>{file}</span>
+));
+
 const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   help: () => ({ output: commandsHelp }),
   ls: () => ({
     output: (
       <div className="flex gap-6 text-blue-400">
-        {Object.keys(files).map((file) => (
-          <span key={file}>{file}</span>
-        ))}
+        {FILE_ELEMENTS}
       </div>
     ),
   }),
