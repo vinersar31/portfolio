@@ -76,7 +76,7 @@ const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   }),
   cat: ({ arg }) => {
     if (!arg) return { output: <span className="text-red-500">cat: missing file operand</span> };
-    if (files[arg]) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
+    if (Object.hasOwn(files, arg)) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
     return { output: <span className="text-red-500">cat: {arg}: No such file or directory</span> };
   },
   clear: ({ setHistory }) => {
