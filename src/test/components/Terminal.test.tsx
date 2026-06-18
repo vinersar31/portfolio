@@ -40,4 +40,21 @@ describe('Terminal', () => {
         return element?.tagName.toLowerCase() === 'div' && content.includes('Interactive mode activated');
     })).toBeInTheDocument()
   })
+it('displays command not found for invalid commands', () => {
+    render(<Terminal />)
+
+    // Click to switch to interactive mode
+    const container = screen.getByText(/Welcome to vinersarOS/i).parentElement?.parentElement?.parentElement
+    act(() => {
+      if (container) fireEvent.click(container)
+    })
+
+    // Find input and type invalid command
+    const input = screen.getByRole('textbox', { hidden: true })
+    fireEvent.change(input, { target: { value: 'invalidcmd' } })
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' })
+
+    // Verify error output
+    expect(screen.getByText('invalidcmd: command not found')).toBeInTheDocument()
+  })
 })
