@@ -52,6 +52,8 @@ type HistoryEntry = {
   output: React.ReactNode;
 };
 
+const ALLOWED_ROUTES = new Set(["about", "projects", "cv"]);
+
 type CommandContext = {
   arg: string | undefined;
   router: { push: (url: string) => void };
@@ -63,20 +65,22 @@ type CommandResult = {
   clear?: boolean;
 };
 
+const FILE_ELEMENTS = Object.keys(files).map((file) => (
+  <span key={file}>{file}</span>
+));
+
 const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   help: () => ({ output: commandsHelp }),
   ls: () => ({
     output: (
       <div className="flex gap-6 text-blue-400">
-        {Object.keys(files).map((file) => (
-          <span key={file}>{file}</span>
-        ))}
+        {FILE_ELEMENTS}
       </div>
     ),
   }),
   cat: ({ arg }) => {
     if (!arg) return { output: <span className="text-red-500">cat: missing file operand</span> };
-    if (files[arg]) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
+    if (Object.hasOwn(files, arg)) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
     return { output: <span className="text-red-500">cat: {arg}: No such file or directory</span> };
   },
   clear: ({ setHistory }) => {
@@ -86,7 +90,7 @@ const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   whoami: () => ({ output: "vinersar31" }),
   cd: ({ arg, router }) => {
     if (!arg || arg === "~") return { output: null };
-    if (arg === "about" || arg === "projects" || arg === "cv") {
+    if (ALLOWED_ROUTES.has(arg)) {
       router.push(`/${arg}`);
       return { output: `Navigating to /${arg}...` };
     }
@@ -197,7 +201,7 @@ export function Terminal() {
 
     if (!baseCommand) return;
 
-    const handler = commands[baseCommand];
+    const handler = Object.hasOwn(commands, baseCommand) ? commands[baseCommand] : null;
     const result = handler
       ? handler({ arg, router, setHistory })
       : { output: <span className="text-red-500">{baseCommand}: command not found</span> } as CommandResult;
