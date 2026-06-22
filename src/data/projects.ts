@@ -79,4 +79,16 @@ export const projects = [
     url: "https://github.com/vinersar31/omnibus",
     isPrivate: false,
   },
+  {
+    title: "codex",
+    description: "a project named codex.",
+    url: "https://github.com/vinersar31/codex",
+    isPrivate: false,
+  },
+  {
+    title: "sentinel",
+    description: "a project named sentinel.",
+    url: "https://github.com/vinersar31/sentinel",
+    isPrivate: false,
+  },
 ];
