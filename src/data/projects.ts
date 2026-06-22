@@ -63,7 +63,7 @@ export const projects = [
   },
   {
     title: "capital",
-    description: "a wealth tracker sits at the top of the financial stack.",
+    description: "a wealth tracker sitting at the top of the financial stack.",
     url: "https://github.com/vinersar31/capital",
     isPrivate: false,
   },
