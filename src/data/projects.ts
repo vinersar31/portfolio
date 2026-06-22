@@ -69,7 +69,7 @@ export const projects = [
   },
   {
     title: "vault",
-    description: "a project named vault.",
+    description: "a document manager & archive.",
     url: "https://github.com/vinersar31/vault",
     isPrivate: false,
   },
