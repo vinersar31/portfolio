@@ -61,4 +61,34 @@ export const projects = [
     url: "https://github.com/vinersar31/building_with_claude_API",
     isPrivate: false,
   },
+  {
+    title: "capital",
+    description: "a project named capital.",
+    url: "https://github.com/vinersar31/capital",
+    isPrivate: false,
+  },
+  {
+    title: "vault",
+    description: "a project named vault.",
+    url: "https://github.com/vinersar31/vault",
+    isPrivate: false,
+  },
+  {
+    title: "omnibus",
+    description: "a project named omnibus.",
+    url: "https://github.com/vinersar31/omnibus",
+    isPrivate: false,
+  },
+  {
+    title: "codex",
+    description: "a project named codex.",
+    url: "https://github.com/vinersar31/codex",
+    isPrivate: false,
+  },
+  {
+    title: "sentinel",
+    description: "a project named sentinel.",
+    url: "https://github.com/vinersar31/sentinel",
+    isPrivate: false,
+  },
 ];
