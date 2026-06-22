@@ -2,14 +2,14 @@ export const projects = [
   {
     title: "pulseboard: jira & project metrics",
     badge: "Master's Degree",
-    description: "developed as part of my master's degree in project management. this project collects and visualizes agile-related data from jira, confluence, excel, and manual entries. insights are shown in grafana dashboards powered by prometheus for time-series analytics.",
+    description: "a master's degree project that visualizes agile metrics from jira and other sources using grafana and prometheus.",
     url: "https://github.com/vinersar31/pulse_board",
     isPrivate: true,
   },
   {
     title: "ecommerce mobile app",
     badge: "Bachelor's Degree",
-    description: "created an ecommerce mobile app for my bachelor's degree where users could trade games. built using xamarin forms and c#.",
+    description: "a bachelor's degree project: an ecommerce mobile app for trading games built with xamarin forms and c#.",
     url: "https://github.com/vinersar31/Licenta-Ecommerce",
     isPrivate: true,
   },
