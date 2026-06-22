@@ -81,7 +81,7 @@ export const projects = [
   },
   {
     title: "codex",
-    description: "a project named codex.",
+    description: "developer's knowledge base for easily search and chat with llm with this as context.",
     url: "https://github.com/vinersar31/codex",
     isPrivate: false,
   },
