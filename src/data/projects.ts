@@ -87,7 +87,7 @@ export const projects = [
   },
   {
     title: "sentinel",
-    description: "a project named sentinel.",
+    description: "tracks the uptime of my ecosystem.",
     url: "https://github.com/vinersar31/sentinel",
     isPrivate: false,
   },
