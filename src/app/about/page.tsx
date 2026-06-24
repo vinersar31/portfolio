@@ -1,3 +1,13 @@
+import { SKILLS, THINGS_I_ENJOY } from "@/data/about";
+
+function ListItem({ icon, text }: { icon: string; text: string }) {
+  return (
+    <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg">
+      <span className="text-2xl">{icon}</span> {text}
+    </li>
+  );
+}
+
 export default function About() {
   return (
     <section className="py-12 md:py-24 max-w-3xl mx-auto space-y-8 font-light">
@@ -25,23 +35,18 @@ export default function About() {
       <div className="pt-8">
         <h2 className="text-3xl font-semibold mb-6 font-mono lowercase"><span className="text-red-500">/</span> skills & tech</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">⚡</span> c++, python, rust</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🧠</span> ai, llms, rag</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">⚛️</span> react, next.js</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🐳</span> docker, kubernetes, aws</li>
+          {SKILLS.map((item, i) => (
+            <ListItem key={i} icon={item.icon} text={item.text} />
+          ))}
         </ul>
       </div>
 
       <div className="pt-8">
         <h2 className="text-3xl font-semibold mb-6 font-mono lowercase"><span className="text-red-500">/</span> things i enjoy</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">💻</span> building useful tools</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">📈</span> visualizing data in creative ways</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🤖</span> playing with AI & automation</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🎮</span> gaming & unwinding with friends</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">💹</span> exploring finance, stocks & economics</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🗳️</span> following politics & global events</li>
-          <li className="flex items-center gap-3 bg-secondary/50 p-4 rounded-lg"><span className="text-2xl">🌍</span> learning constantly</li>
+          {THINGS_I_ENJOY.map((item, i) => (
+            <ListItem key={i} icon={item.icon} text={item.text} />
+          ))}
         </ul>
       </div>
     </section>
