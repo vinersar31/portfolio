@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Projects from './page';
+import Projects from '@/app/projects/page';
 
 describe('Projects Page', () => {
   it('renders the projects page header', () => {

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { Navbar } from '../../components/navbar'
+import { Navbar } from '@/components/navbar'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 
