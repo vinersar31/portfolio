@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { Terminal } from '../../components/Terminal'
+import { Terminal } from '../../src/components/Terminal'
 import { useRouter } from 'next/navigation'
 
 vi.mock('next/navigation', () => ({
