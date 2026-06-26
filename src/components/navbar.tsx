@@ -49,12 +49,24 @@ export function Navbar() {
   React.useEffect(() => {
     setMounted(true)
 
+    let ticking = false
+    let rafId: number
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      if (!ticking) {
+        rafId = window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (rafId) window.cancelAnimationFrame(rafId)
+    }
   }, [])
 
   return (

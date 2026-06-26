@@ -63,13 +63,13 @@ export const projects = [
   },
   {
     title: "capital",
-    description: "a project named capital.",
+    description: "a wealth tracker sitting at the top of the financial stack.",
     url: "https://github.com/vinersar31/capital",
     isPrivate: false,
   },
   {
     title: "vault",
-    description: "a project named vault.",
+    description: "a document manager & archive.",
     url: "https://github.com/vinersar31/vault",
     isPrivate: false,
   },
@@ -81,13 +81,13 @@ export const projects = [
   },
   {
     title: "codex",
-    description: "a project named codex.",
+    description: "developer's knowledge base for easily search and chat with llm with this as context.",
     url: "https://github.com/vinersar31/codex",
     isPrivate: false,
   },
   {
     title: "sentinel",
-    description: "a project named sentinel.",
+    description: "tracks the uptime of my ecosystem.",
     url: "https://github.com/vinersar31/sentinel",
     isPrivate: false,
   },
