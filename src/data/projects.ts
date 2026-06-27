@@ -19,6 +19,7 @@ export const projects = [
     description: "a wealth tracker sitting at the top of the financial stack.",
     url: "https://github.com/vinersar31/capital",
     isPrivate: false,
+    siteUrl: "https://vinersar31.github.io/capital/",
   },
   {
     title: "vault",
@@ -47,6 +48,7 @@ export const projects = [
     description: "tracks the uptime of my ecosystem.",
     url: "https://github.com/vinersar31/sentinel",
     isPrivate: false,
+    siteUrl: "https://vinersar31.github.io/sentinel/",
   },
   {
     title: "eu compliance engine",
@@ -59,6 +61,7 @@ export const projects = [
     description: "an automated trading bot for cryptocurrency or stock markets.",
     url: "https://github.com/vinersar31/trading_bot",
     isPrivate: false,
+    siteUrl: "https://vinersar31.github.io/trading_bot/",
   },
   {
     title: "ai playground",
