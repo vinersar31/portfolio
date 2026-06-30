@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects";
-import { ExternalLink, Lock } from "lucide-react";
+import { ExternalLink, Lock, Globe } from "lucide-react";
 
 export default function Projects() {
 
@@ -32,27 +32,40 @@ export default function Projects() {
               </p>
             </div>
 
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase ${
-                project.isPrivate
-                  ? "bg-destructive/10 text-destructive hover:bg-destructive/20 cursor-help"
-                  : "bg-red-500 text-white hover:bg-red-600"
-              }`}
-              title={project.isPrivate ? "Private Repository (only accessible with permission)" : "View Repository"}
-            >
-              {project.isPrivate ? (
-                <>
-                  <Lock className="w-4 h-4" /> view repository
-                </>
-              ) : (
-                <>
-                  <ExternalLink className="w-4 h-4" /> view repository
-                </>
+            <div className="flex flex-col sm:flex-row gap-2">
+              {project.siteUrl && (
+                <a
+                  href={project.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase bg-blue-500 text-white hover:bg-blue-600"
+                  title="Visit Website"
+                >
+                  <Globe className="w-4 h-4" /> visit website
+                </a>
               )}
-            </a>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase ${
+                  project.isPrivate
+                    ? "bg-destructive/10 text-destructive hover:bg-destructive/20 cursor-help"
+                    : "bg-red-500 text-white hover:bg-red-600"
+                }`}
+                title={project.isPrivate ? "Private Repository (only accessible with permission)" : "View Repository"}
+              >
+                {project.isPrivate ? (
+                  <>
+                    <Lock className="w-4 h-4" /> view repository
+                  </>
+                ) : (
+                  <>
+                    <ExternalLink className="w-4 h-4" /> view repository
+                  </>
+                )}
+              </a>
+            </div>
           </article>
         ))}
       </div>
