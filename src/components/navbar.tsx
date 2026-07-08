@@ -51,11 +51,16 @@ export function Navbar() {
 
     let ticking = false
     let rafId: number
+    let currentScrolled = false
 
     const handleScroll = () => {
       if (!ticking) {
         rafId = window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20)
+          const isScrolled = window.scrollY > 20
+          if (currentScrolled !== isScrolled) {
+            setScrolled(isScrolled)
+            currentScrolled = isScrolled
+          }
           ticking = false
         })
         ticking = true
