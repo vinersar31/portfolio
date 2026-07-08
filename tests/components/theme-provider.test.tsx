@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { ThemeProvider } from '@/components/theme-provider'
 
 vi.mock('next-themes', () => ({
-  ThemeProvider: ({ children, attribute, defaultTheme, enableSystem, ...props }: any) => (
+  ThemeProvider: ({ children, attribute, defaultTheme, enableSystem, ...props }: Record<string, unknown> & { children: React.ReactNode }) => (
     <div
       data-testid="next-themes-provider"
       data-attribute={attribute}

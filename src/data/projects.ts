@@ -1,5 +1,11 @@
 export const projects = [
   {
+    title: "collision vision",
+    description: "instance segmentation of post-accident car damage using yolov8-seg.",
+    url: "https://github.com/vinersar31/collision_vision",
+    isPrivate: false,
+  },
+  {
     title: "pulseboard: jira & project metrics",
     badge: "Master's Degree",
     description: "developed as part of my master's degree in project management. this project collects and visualizes agile-related data from jira, confluence, excel, and manual entries. insights are shown in grafana dashboards powered by prometheus for time-series analytics.",
