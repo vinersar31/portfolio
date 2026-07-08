@@ -28,13 +28,6 @@ export function Footer() {
           >
             <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-[#0A66C2] dark:group-hover:text-[#3888FF] transition-colors" />
           </a>
-          {/* <a
-            href="mailto:contact@example.com"
-            className="group flex items-center justify-center h-10 w-10 rounded-full bg-secondary/50 border border-transparent hover:border-border hover:bg-secondary transition-all duration-300 hover:-translate-y-1"
-            aria-label="Email"
-          >
-            <Mail className="h-5 w-5 text-muted-foreground group-hover:text-red-500 transition-colors" />
-          </a> */}
         </div>
 
         <div className="text-muted-foreground text-sm font-mono flex items-center">
