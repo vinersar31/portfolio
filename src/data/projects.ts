@@ -88,12 +88,6 @@ export const projects = [
     isPrivate: false,
   },
   {
-    title: "istaris",
-    description: "ai-powered digital employees that work 24/7 to automate your entire workflow.",
-    url: "https://github.com/vinersar31/istaris",
-    isPrivate: false,
-  },
-  {
     title: "building with claude api",
     description: "simple jupyter notebooks for learning how to use the anthropic claude api with python.",
     url: "https://github.com/vinersar31/building_with_claude_API",
