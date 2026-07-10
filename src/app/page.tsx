@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { Terminal } from "@/components/Terminal";
 
+const HELLO_LETTERS = [
+  { char: 'h', color: 'hover:text-[#ff5f56]' },
+  { char: 'e', color: 'hover:text-[#ffbd2e]' },
+  { char: 'l', color: 'hover:text-[#27c93f]' },
+  { char: 'l', color: 'hover:text-blue-500' },
+  { char: 'o', color: 'hover:text-purple-500' },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-between min-h-[calc(100vh-80px)] py-12 md:py-16 pt-24">
@@ -11,11 +19,11 @@ export default function Home() {
         <div className="max-w-2xl text-left flex-1 relative z-10">
           <h1 className="text-6xl md:text-8xl font-black leading-none mb-8 cursor-default tracking-tighter">
             <span className="text-primary mr-1">/</span>
-            <span className="inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-[#ff5f56]">h</span>
-            <span className="inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-[#ffbd2e]">e</span>
-            <span className="inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-[#27c93f]">l</span>
-            <span className="inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-blue-500">l</span>
-            <span className="inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-purple-500">o</span>
+            {HELLO_LETTERS.map(({ char, color }, i) => (
+              <span key={i} className={`inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${color}`}>
+                {char}
+              </span>
+            ))}
           </h1>
 
           <div className="space-y-6">
