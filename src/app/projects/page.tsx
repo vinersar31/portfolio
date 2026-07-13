@@ -1,7 +1,11 @@
 import { projects } from "@/data/projects";
-import { ExternalLink, Lock, Globe } from "lucide-react";
+import { ExternalLink, Lock, Globe, Pin } from "lucide-react";
 
 export default function Projects() {
+  const sortedProjects = [...projects].sort((a, b) => {
+    if (a.pinned === b.pinned) return 0;
+    return a.pinned ? -1 : 1;
+  });
 
 
   return (
@@ -11,7 +15,7 @@ export default function Projects() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project) => (
+        {sortedProjects.map((project) => (
           <article
             key={project.url}
             className="group relative flex flex-col justify-between p-6 bg-card border border-border rounded-xl transition-all hover:shadow-lg dark:hover:border-red-500/50"
@@ -20,6 +24,7 @@ export default function Projects() {
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl font-bold leading-tight group-hover:text-red-500 transition-colors font-mono lowercase">
                   <span className="text-red-500">/</span> {project.title}
+                {project.pinned && <Pin className="w-4 h-4 ml-2 inline-block text-red-500 rotate-45" />}
                 </h3>
                 {project.badge && (
                   <span className="shrink-0 text-[10px] md:text-xs font-medium px-2 py-1 bg-secondary text-secondary-foreground rounded-full lowercase font-mono">

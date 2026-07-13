@@ -1,6 +1,7 @@
 export const projects = [
   {
     title: "collision vision",
+    pinned: true,
     description: "instance segmentation of post-accident car damage using yolov8-seg.",
     url: "https://github.com/vinersar31/collision_vision",
     isPrivate: false,
@@ -36,6 +37,7 @@ export const projects = [
   },
   {
     title: "personal-ops",
+    pinned: true,
     badge: "personal-ops",
     description: "infrastructure and operations repository.",
     url: "https://github.com/vinersar31/personal-ops",
