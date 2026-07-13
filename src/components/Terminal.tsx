@@ -47,7 +47,7 @@ const commandsHelp = (
 );
 
 type HistoryEntry = {
-  id: number;
+  id: string | number;
   command: string;
   output: React.ReactNode;
 };
@@ -129,7 +129,7 @@ export function Terminal() {
       setInput("");
       setHistory([
         {
-          id: Date.now(),
+          id: crypto.randomUUID(),
           command: "",
           output: (
             <div className="text-muted-foreground mb-4">
@@ -213,7 +213,7 @@ export function Terminal() {
     setHistory((prev) => [
       ...prev,
       {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         command: trimmedCmd,
         output: result.output,
       },
