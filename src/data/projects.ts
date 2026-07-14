@@ -107,4 +107,10 @@ export const projects = [
     url: "https://github.com/vinersar31/blueprints",
     isPrivate: false,
   },
+  {
+    title: "fastapi-gemma-stream",
+    description: "a modern, teaching-grade fastapi service that streams a local ollama gemma model to clients over four different wire protocols — paired with a jupyter notebook that dissects exactly how async llm streaming works.",
+    url: "https://github.com/vinersar31/fastapi-gemma-stream",
+    isPrivate: false,
+  },
 ];
