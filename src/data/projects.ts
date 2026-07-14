@@ -101,4 +101,10 @@ export const projects = [
     url: "https://github.com/vinersar31/building_with_claude_API",
     isPrivate: false,
   },
+  {
+    title: "blueprints",
+    description: "reusable, battle-tested patterns for shipping apps fast. each blueprint is a self-contained folder with documentation and copy-paste-ready templates distilled from real, shipped projects.",
+    url: "https://github.com/vinersar31/blueprints",
+    isPrivate: false,
+  },
 ];
