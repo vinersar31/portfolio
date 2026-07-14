@@ -1,47 +1,104 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 // Define the "file system" content
 const files: Record<string, React.ReactNode> = {
   "about.txt": (
     <div className="space-y-2">
-      <p>i&apos;m a software developer with a strong background in <strong className="text-foreground">C++</strong> and <strong className="text-foreground">ADAS systems</strong>.</p>
+      <p>
+        i&apos;m a software developer with a strong background in{" "}
+        <strong className="text-foreground">C++</strong> and{" "}
+        <strong className="text-foreground">ADAS systems</strong>.
+      </p>
       <p>focused on building reliable and performance-critical applications.</p>
-      <p>deeply passionate about <strong className="text-foreground">artificial intelligence</strong>, <strong className="text-foreground">machine learning</strong>, and <strong className="text-foreground">embedded systems</strong>.</p>
+      <p>
+        deeply passionate about{" "}
+        <strong className="text-foreground">artificial intelligence</strong>,{" "}
+        <strong className="text-foreground">machine learning</strong>, and{" "}
+        <strong className="text-foreground">embedded systems</strong>.
+      </p>
     </div>
   ),
   "projects.txt": (
     <div className="space-y-2">
-      <p>i have worked on several personal and academic projects. to see them all, please visit the projects page.</p>
-      <p>type <span className="text-primary font-bold">cd projects</span> to view them or check out my github <span className="text-primary font-bold">cat links.txt</span>.</p>
+      <p>
+        i have worked on several personal and academic projects. to see them
+        all, please visit the projects page.
+      </p>
+      <p>
+        type <span className="text-primary font-bold">cd projects</span> to view
+        them or check out my github{" "}
+        <span className="text-primary font-bold">cat links.txt</span>.
+      </p>
     </div>
   ),
   "cv.txt": (
     <div className="space-y-2">
-      <p>to see a snapshot of my professional background in software development, including my experience, education, and skills.</p>
-      <p>type <span className="text-primary font-bold">cd cv</span> to view and download my curriculum vitae.</p>
+      <p>
+        to see a snapshot of my professional background in software development,
+        including my experience, education, and skills.
+      </p>
+      <p>
+        type <span className="text-primary font-bold">cd cv</span> to view and
+        download my curriculum vitae.
+      </p>
     </div>
   ),
   "links.txt": (
     <div className="space-y-2">
-      <p>github: <a href="https://github.com/vinersar" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">github.com/vinersar</a></p>
-      <p>linkedin: <a href="https://linkedin.com/in/vinersar" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">linkedin.com/in/vinersar</a></p>
-      <p>email: <a href="mailto:vinersar31@example.com" className="text-blue-400 hover:underline">vinersar31@example.com</a></p>
+      <p>
+        github:{" "}
+        <a
+          href="https://github.com/vinersar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          github.com/vinersar
+        </a>
+      </p>
+      <p>
+        linkedin:{" "}
+        <a
+          href="https://linkedin.com/in/vinersar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          linkedin.com/in/vinersar
+        </a>
+      </p>
+      <p>
+        email:{" "}
+        <a
+          href="mailto:vinersar31@example.com"
+          className="text-blue-400 hover:underline"
+        >
+          vinersar31@example.com
+        </a>
+      </p>
     </div>
-  )
+  ),
 };
 
 const commandsHelp = (
   <div className="space-y-1">
     <p className="mb-2">Available commands:</p>
     <div className="grid grid-cols-[80px_1fr] gap-x-4 gap-y-1">
-      <span className="text-primary font-bold">ls</span><span>list available files</span>
-      <span className="text-primary font-bold">cat</span><span>read a file (e.g., <span className="text-primary">cat about.txt</span>)</span>
-      <span className="text-primary font-bold">help</span><span>show this help message</span>
-      <span className="text-primary font-bold">clear</span><span>clear the terminal screen</span>
-      <span className="text-primary font-bold">whoami</span><span>display current user</span>
+      <span className="text-primary font-bold">ls</span>
+      <span>list available files</span>
+      <span className="text-primary font-bold">cat</span>
+      <span>
+        read a file (e.g., <span className="text-primary">cat about.txt</span>)
+      </span>
+      <span className="text-primary font-bold">help</span>
+      <span>show this help message</span>
+      <span className="text-primary font-bold">clear</span>
+      <span>clear the terminal screen</span>
+      <span className="text-primary font-bold">whoami</span>
+      <span>display current user</span>
     </div>
   </div>
 );
@@ -72,16 +129,28 @@ const FILE_ELEMENTS = Object.keys(files).map((file) => (
 const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
   help: () => ({ output: commandsHelp }),
   ls: () => ({
-    output: (
-      <div className="flex gap-6 text-blue-400">
-        {FILE_ELEMENTS}
-      </div>
-    ),
+    output: <div className="flex gap-6 text-blue-400">{FILE_ELEMENTS}</div>,
   }),
   cat: ({ arg }) => {
-    if (!arg) return { output: <span className="text-red-500">cat: missing file operand</span> };
-    if (Object.hasOwn(files, arg)) return { output: <div className="ml-4 border-l-2 border-border pl-4 my-2">{files[arg]}</div> };
-    return { output: <span className="text-red-500">cat: {arg}: No such file or directory</span> };
+    if (!arg)
+      return {
+        output: <span className="text-red-500">cat: missing file operand</span>,
+      };
+    if (Object.hasOwn(files, arg))
+      return {
+        output: (
+          <div className="ml-4 border-l-2 border-border pl-4 my-2">
+            {files[arg]}
+          </div>
+        ),
+      };
+    return {
+      output: (
+        <span className="text-red-500">
+          cat: {arg}: No such file or directory
+        </span>
+      ),
+    };
   },
   clear: ({ setHistory }) => {
     setHistory([]);
@@ -94,11 +163,21 @@ const commands: Record<string, (ctx: CommandContext) => CommandResult> = {
       router.push(`/${arg}`);
       return { output: `Navigating to /${arg}...` };
     }
-    return { output: <span className="text-red-500">cd: {arg}: No such file or directory</span> };
+    return {
+      output: (
+        <span className="text-red-500">
+          cd: {arg}: No such file or directory
+        </span>
+      ),
+    };
   },
 };
-const AUTO_TYPE_SEQUENCE = ["cat about.txt", "cat cv.txt", "cat projects.txt", "cat links.txt"];
-
+const AUTO_TYPE_SEQUENCE = [
+  "cat about.txt",
+  "cat cv.txt",
+  "cat projects.txt",
+  "cat links.txt",
+];
 
 export function Terminal() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -123,7 +202,7 @@ export function Terminal() {
   }, [history, input]);
 
   // Handle clicking anywhere to focus input and enter interactive mode
-  const handleTerminalClick = () => {
+  const handleTerminalClick = useCallback(() => {
     if (mode === "auto") {
       setMode("interactive");
       setInput("");
@@ -133,14 +212,16 @@ export function Terminal() {
           command: "",
           output: (
             <div className="text-muted-foreground mb-4">
-              Interactive mode activated. Type <span className="text-primary font-bold">help</span> to see available commands.
+              Interactive mode activated. Type{" "}
+              <span className="text-primary font-bold">help</span> to see
+              available commands.
             </div>
-          )
-        }
+          ),
+        },
       ]);
     }
     inputRef.current?.focus();
-  };
+  }, [mode]);
 
   // Auto-typing logic (only runs in "auto" mode)
   useEffect(() => {
@@ -174,15 +255,18 @@ export function Terminal() {
     } else {
       // Typing characters
       if (charIndex < currentCommand.length) {
-        timeout = setTimeout(() => {
-          setCharIndex((prev) => prev + 1);
-          setInput(currentCommand.substring(0, charIndex + 1));
-        }, Math.random() * 100 + 50); // Random typing speed (50-150ms)
+        timeout = setTimeout(
+          () => {
+            setCharIndex((prev) => prev + 1);
+            setInput(currentCommand.substring(0, charIndex + 1));
+          },
+          Math.random() * 100 + 50,
+        ); // Random typing speed (50-150ms)
       } else {
         // Finished typing the command
         // Avoid synchronous render loop
         timeout = setTimeout(() => {
-           setIsPaused(true);
+          setIsPaused(true);
         }, 0);
       }
     }
@@ -191,46 +275,63 @@ export function Terminal() {
   }, [mode, seqIndex, charIndex, isDeleting, isPaused]);
 
   // Execute a command
-  const executeCommand = (cmd: string) => {
-    const trimmedCmd = cmd.trim();
-    if (!trimmedCmd) return; // Ignore empty commands
+  const executeCommand = useCallback(
+    (cmd: string) => {
+      const trimmedCmd = cmd.trim();
+      if (!trimmedCmd) return; // Ignore empty commands
 
-    const parts = trimmedCmd.split(" ").filter(Boolean);
-    const baseCommand = parts[0]?.toLowerCase();
-    const arg = parts[1];
+      const parts = trimmedCmd.split(" ").filter(Boolean);
+      const baseCommand = parts[0]?.toLowerCase();
+      const arg = parts[1];
 
-    if (!baseCommand) return;
+      if (!baseCommand) return;
 
-    const handler = Object.hasOwn(commands, baseCommand) ? commands[baseCommand] : null;
-    const result = handler
-      ? handler({ arg, router, setHistory })
-      : { output: <span className="text-red-500">{baseCommand}: command not found</span> } as CommandResult;
+      const handler = Object.hasOwn(commands, baseCommand)
+        ? commands[baseCommand]
+        : null;
+      const result = handler
+        ? handler({ arg, router, setHistory })
+        : ({
+            output: (
+              <span className="text-red-500">
+                {baseCommand}: command not found
+              </span>
+            ),
+          } as CommandResult);
 
-    if (result.clear) {
-      return; // History already cleared by handler, don't add the clear command to history
-    }
+      if (result.clear) {
+        return; // History already cleared by handler, don't add the clear command to history
+      }
 
-    setHistory((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        command: trimmedCmd,
-        output: result.output,
-      },
-    ]);
-  };
+      setHistory((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          command: trimmedCmd,
+          output: result.output,
+        },
+      ]);
+    },
+    [router],
+  );
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      executeCommand(input);
-      setInput("");
-    }
-  };
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        executeCommand(input);
+        setInput("");
+      }
+    },
+    [executeCommand, input],
+  );
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (mode === "auto") setMode("interactive");
-    setInput(e.target.value);
-  };
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (mode === "auto") setMode("interactive");
+      setInput(e.target.value);
+    },
+    [mode],
+  );
 
   return (
     <div
@@ -244,7 +345,9 @@ export function Terminal() {
           <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
           <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
         </div>
-        <div className="mx-auto text-xs text-zinc-500 select-none">vinersar31@portofolio:~</div>
+        <div className="mx-auto text-xs text-zinc-500 select-none">
+          vinersar31@portofolio:~
+        </div>
       </div>
 
       {/* Terminal Content Area */}
@@ -254,35 +357,40 @@ export function Terminal() {
       >
         {/* Intro Text */}
         {history.length === 0 && mode === "auto" && (
-           <div className="mb-6 text-zinc-500">
-             <p>Welcome to vinersarOS v1.0.0</p>
-             <p>Click anywhere or start typing to interact.</p>
-           </div>
+          <div className="mb-6 text-zinc-500">
+            <p>Welcome to vinersarOS v1.0.0</p>
+            <p>Click anywhere or start typing to interact.</p>
+          </div>
         )}
 
         {/* Command History */}
         {history.map((entry) => (
           <div key={entry.id} className="mb-4">
             <div className="flex">
-              <span className="text-green-400 mr-2 shrink-0">vinersar31@portofolio&gt;</span>
+              <span className="text-green-400 mr-2 shrink-0">
+                vinersar31@portofolio&gt;
+              </span>
               <span className="text-zinc-100">{entry.command}</span>
             </div>
-            {entry.output && <div className="mt-2 text-zinc-300">{entry.output}</div>}
+            {entry.output && (
+              <div className="mt-2 text-zinc-300">{entry.output}</div>
+            )}
           </div>
         ))}
 
         {/* Active Input Line */}
         <div className="flex items-center">
-          <span className="text-green-400 mr-2 shrink-0">vinersar31@portofolio&gt;</span>
+          <span className="text-green-400 mr-2 shrink-0">
+            vinersar31@portofolio&gt;
+          </span>
           <div className="relative flex-1 flex items-center h-6">
-
             {/* The visible typed text */}
             <span className="text-zinc-100 whitespace-pre absolute inset-0 pointer-events-none flex items-center">
               {input}
               {/* Blinking Cursor */}
               <span
                 className="inline-block w-[8px] h-[1em] ml-[1px] bg-zinc-300 animate-pulse"
-                style={{ verticalAlign: 'middle' }}
+                style={{ verticalAlign: "middle" }}
               ></span>
             </span>
 
