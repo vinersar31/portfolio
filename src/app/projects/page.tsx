@@ -1,6 +1,8 @@
 import { projects } from "@/data/projects";
 import { ExternalLink, Lock, Globe, Pin } from "lucide-react";
 
+const LINK_BASE_CLASSES = "inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase";
+
 export default function Projects() {
   const sortedProjects = [...projects].sort((a, b) => {
     if (a.pinned === b.pinned) return 0;
@@ -43,7 +45,7 @@ export default function Projects() {
                   href={project.siteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase bg-blue-500 text-white hover:bg-blue-600"
+                  className={`${LINK_BASE_CLASSES} bg-blue-500 text-white hover:bg-blue-600`}
                   title="Visit Website"
                 >
                   <Globe className="w-4 h-4" /> visit website
@@ -53,7 +55,7 @@ export default function Projects() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 text-sm font-medium w-fit px-4 py-2 rounded-md transition-colors font-mono lowercase ${
+                className={`${LINK_BASE_CLASSES} ${
                   project.isPrivate
                     ? "bg-destructive/10 text-destructive hover:bg-destructive/20 cursor-help"
                     : "bg-red-500 text-white hover:bg-red-600"
