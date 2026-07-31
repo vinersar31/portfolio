@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
+import { useScroll } from "@/hooks/use-scroll"
 
 const navItems = [
   { name: "home", href: "/" },
@@ -44,34 +45,10 @@ export function Navbar() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
+  const scrolled = useScroll()
 
   React.useEffect(() => {
     setMounted(true)
-
-    let ticking = false
-    let rafId: number
-    let currentScrolled = false
-
-    const handleScroll = () => {
-      if (!ticking) {
-        rafId = window.requestAnimationFrame(() => {
-          const isScrolled = window.scrollY > 20
-          if (currentScrolled !== isScrolled) {
-            setScrolled(isScrolled)
-            currentScrolled = isScrolled
-          }
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      if (rafId) window.cancelAnimationFrame(rafId)
-    }
   }, [])
 
   return (
