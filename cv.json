@@ -1,0 +1,67 @@
+{
+  "personal": {
+    "name": "Vinersar Dan-Ioan",
+    "location": "Sibiu, SB 550316",
+    "phone": "(+40) 756705851",
+    "email": "danvinersar98@gmail.com"
+  },
+  "summary": "Software Engineer with 5+ years of experience in developing scalable systems and simulation frameworks for ADAS. Proficient in modern C++, JavaScript, and CI/CD pipelines. Proven track record of championing TDD, Design Patterns, and Agile methodologies.",
+  "skills": [
+    { "category": "Languages", "items": "C++ (C++17), C, JavaScript, TypeScript" },
+    { "category": "Frameworks & Libraries", "items": "React, Next.js, Node.js, Google Test" },
+    { "category": "Tools", "items": "Visual Studio, VS Code, CMake, Git, GitHub, GitLab, Jira, WSL, AI Tools" },
+    { "category": "Methodologies", "items": "TDD, Agile/Scrum, Design Patterns" }
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Aumovio",
+      "location": "Sibiu",
+      "startDate": "2025-09",
+      "endDate": null,
+      "bullets": []
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "Continental",
+      "location": "Sibiu",
+      "startDate": "2022-09",
+      "endDate": "2025-09",
+      "bullets": [
+        "Developed simulation framework for Advanced Driver Assistance Systems (ADAS).",
+        "Joined a team developing a new framework, using C++ (backend) and JavaScript (frontend).",
+        "Collaborated with cross-functional teams using Agile methodologies.",
+        "Spearheaded Test Driven Development (TDD), ensuring robustness and reliability of codebase.",
+        "Implemented and enforced Design Patterns to enhance maintainability and scalability.",
+        "Demonstrated proficiency in modern C++ (C++17), leveraging simplicity, safety, and performance."
+      ]
+    },
+    {
+      "title": "Junior Software Engineer",
+      "company": "Ausy Technologies",
+      "location": "Sibiu",
+      "startDate": "2020-12",
+      "endDate": "2021-06",
+      "bullets": [
+        "Developed Bluetooth detection application with ESP32 series Espressif board.",
+        "Used C, Eclipse IDE, and Espressif extension; managed version control via GitLab."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master's Degree",
+      "field": "Project Management",
+      "institution": "Faculty of Engineering, Sibiu",
+      "startDate": "2023-10",
+      "endDate": "2025-07"
+    },
+    {
+      "degree": "Bachelor's Degree",
+      "field": "Computer Science & Computer Engineering",
+      "institution": "Faculty of Engineering, Sibiu",
+      "startDate": "2017-10",
+      "endDate": "2022-07"
+    }
+  ]
+}

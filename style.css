@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ─── Base Reset ────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #1e293b;
+    line-height: 1.45;
+    font-size: 10.5pt;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+header {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    margin-bottom: 0.05em;
+}
+
+.contact-info {
+    font-size: 0.9em;
+    color: #475569;
+    margin: 0;
+}
+
+/* ─── Sections ──────────────────────────────────────── */
+.section {
+    margin-top: 0.8em;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #1e40af;
+    border-bottom: 1.5px solid #1e40af;
+    padding-bottom: 0.15em;
+    margin-bottom: 0.35em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Skills Grid ───────────────────────────────────── */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15em 2em;
+}
+
+.skill-item {
+    font-size: 0.92em;
+}
+
+/* ─── Entries (Experience / Education) ──────────────── */
+.entry {
+    margin-bottom: 0.5em;
+    page-break-inside: avoid;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.entry-header h3 {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.entry-header .date {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #475569;
+    white-space: nowrap;
+    margin-left: 1em;
+}
+
+.institution {
+    font-size: 0.88em;
+    color: #64748b;
+    margin-top: 0.1em;
+}
+
+/* ─── Lists ─────────────────────────────────────────── */
+ul {
+    padding-left: 1.4em;
+    margin-top: 0.15em;
+    margin-bottom: 0.15em;
+}
+
+li {
+    font-size: 0.9em;
+    margin-bottom: 0.1em;
+}
+
+/* ─── Career Timeline ───────────────────────────────── */
+.timeline-container {
+    position: relative;
+    margin: 0.5em 0 0.3em;
+    padding-left: 70px;
+    page-break-inside: avoid;
+}
+
+.tl-axis {
+    position: relative;
+    height: 18px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.tl-year {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 0.72em;
+    font-weight: 500;
+    color: #94a3b8;
+    bottom: 2px;
+}
+
+.tl-row {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    margin-bottom: 3px;
+}
+
+.tl-row-label {
+    position: absolute;
+    left: 0;
+    width: 65px;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-align: right;
+    padding-right: 8px;
+}
+
+.tl-edu-label { color: #059669; }
+.tl-work-label { color: #2563eb; }
+
+.tl-row-track {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    background: #f8fafc;
+    border-radius: 4px;
+}
+
+.tl-bar {
+    position: absolute;
+    top: 3px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tl-edu {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.tl-work {
+    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+}
+
+.tl-bar-label {
+    font-size: 0.62em;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.tl-bar-sub {
+    font-size: 0.52em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.1;
+}
+
+/* ─── Links ─────────────────────────────────────────── */
+a {
+    color: #1e40af;
+    text-decoration: none;
+}
+
+/* ─── Print Overrides ───────────────────────────────── */
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        font-size: 9.5pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    a { color: #1e293b; }
+
+    h2 {
+        color: #1e40af;
+        border-color: #1e40af;
+    }
+}
