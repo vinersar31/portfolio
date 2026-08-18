@@ -1,11 +1,12 @@
 import { projects } from "@/data/projects";
 import { ExternalLink, Lock, Pin } from "lucide-react";
 
+const sortedProjects = [...projects].sort((a, b) => {
+  if (a.pinned === b.pinned) return 0;
+  return a.pinned ? -1 : 1;
+});
+
 export default function Projects() {
-  const sortedProjects = [...projects].sort((a, b) => {
-    if (a.pinned === b.pinned) return 0;
-    return a.pinned ? -1 : 1;
-  });
 
 
   return (
