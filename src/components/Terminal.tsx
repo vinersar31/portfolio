@@ -14,6 +14,9 @@ type HistoryEntry = {
 
 const ALLOWED_ROUTES = new Set(["about", "projects", "cv"]);
 
+// Valid command characters: alphanumeric, spaces, and common file path characters
+const COMMAND_WHITELIST_REGEX = /^[a-zA-Z0-9\s\-_./~]+$/;
+
 type CommandContext = {
   arg: string | undefined;
   router: { push: (url: string) => void };
@@ -176,14 +179,41 @@ export function Terminal() {
 
     return () => clearTimeout(timeout);
   }, [mode, seqIndex, charIndex, isDeleting, isPaused]);
+// Valid command characters: alphanumeric, spaces, and common file path characters
+const COMMAND_WHITELIST_REGEX = /^[a-zA-Z0-9\s\-_./~]+$/;
 
   // Execute a command
   const executeCommand = useCallback(
     (cmd: string) => {
+      if (cmd.length > 200) {
+        setHistory((prev) => [
+          ...prev,
+          {
+            id: Date.now(),
+            command: cmd.substring(0, 50) + "...",
+            output: <span className="text-red-500">Error: Command too long</span>,
+          },
+        ]);
+        return;
+      }
+
       const trimmedCmd = cmd.trim();
       if (!trimmedCmd) return; // Ignore empty commands
 
-      const parts = trimmedCmd.split(" ").filter(Boolean);
+      if (!COMMAND_WHITELIST_REGEX.test(trimmedCmd)) {
+         setHistory((prev) => [
+          ...prev,
+          {
+            id: Date.now(),
+            command: trimmedCmd,
+            output: <span className="text-red-500">Error: Invalid characters in command</span>,
+          },
+        ]);
+        return;
+      }
+
+
+      const parts = trimmedCmd.split(/\s+/);
       const baseCommand = parts[0]?.toLowerCase();
       const arg = parts[1];
 

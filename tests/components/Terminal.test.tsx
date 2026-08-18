@@ -79,6 +79,7 @@ describe('Terminal', () => {
     expect(screen.queryByText(/: command not found/)).not.toBeInTheDocument()
   })
 
+
   it('displays command not found for unknown commands', () => {
     render(<Terminal />)
 
@@ -95,4 +96,40 @@ describe('Terminal', () => {
 
     expect(screen.getByText('unknowncommand: command not found')).toBeInTheDocument()
   })
+
+  it('rejects commands that are too long', () => {
+    render(<Terminal />)
+
+    const container = screen.getByText(/Welcome to vinersarOS/i).parentElement?.parentElement?.parentElement
+    act(() => {
+      if (container) fireEvent.click(container)
+    })
+
+    const input = screen.getByRole('textbox')
+    const longCommand = 'a'.repeat(201);
+    act(() => {
+      fireEvent.change(input, { target: { value: longCommand } })
+      fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' })
+    })
+
+    expect(screen.getByText('Error: Command too long')).toBeInTheDocument()
+  })
+
+  it('rejects commands with invalid characters', () => {
+    render(<Terminal />)
+
+    const container = screen.getByText(/Welcome to vinersarOS/i).parentElement?.parentElement?.parentElement
+    act(() => {
+      if (container) fireEvent.click(container)
+    })
+
+    const input = screen.getByRole('textbox')
+    act(() => {
+      fireEvent.change(input, { target: { value: '<img src=x onerror=alert(1)>' } })
+      fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' })
+    })
+
+    expect(screen.getByText('Error: Invalid characters in command')).toBeInTheDocument()
+  })
+
 })
