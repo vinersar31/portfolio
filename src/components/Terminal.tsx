@@ -179,8 +179,6 @@ export function Terminal() {
 
     return () => clearTimeout(timeout);
   }, [mode, seqIndex, charIndex, isDeleting, isPaused]);
-// Valid command characters: alphanumeric, spaces, and common file path characters
-const COMMAND_WHITELIST_REGEX = /^[a-zA-Z0-9\s\-_./~]+$/;
 
   // Execute a command
   const executeCommand = useCallback(

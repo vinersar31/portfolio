@@ -1,4 +1,5 @@
 import Image from "next/image";
+import mePhoto from "@/../public/images/me.jpg";
 import { Terminal } from "@/components/Terminal";
 
 const HELLO_LETTERS = [
@@ -45,7 +46,7 @@ export default function Home() {
           <div className="relative p-1 rounded-full bg-gradient-to-br from-border to-background shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-3 group-hover:shadow-primary/20">
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             <Image
-              src="/images/me.jpg"
+              src={mePhoto}
               alt="My photo"
               width={260}
               height={260}
