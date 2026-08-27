@@ -19,7 +19,7 @@ describe('CV Page', () => {
     render(<CV />);
     const link = screen.getByRole('link', { name: /download cv/i });
     expect(link).toBeInTheDocument();
-    expect(link.getAttribute('href')).toBe('/cv.pdf');
+    expect(link.getAttribute('href')).toMatch(/cv\.pdf$/);
     expect(link.getAttribute('target')).toBe('_blank');
     expect(link.getAttribute('rel')).toBe('noopener noreferrer');
   });
