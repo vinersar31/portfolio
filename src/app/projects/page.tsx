@@ -1,5 +1,10 @@
 import { projects } from "@/data/projects";
 import { ExternalLink, Lock, Pin } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+};
 
 const sortedProjects = [...projects].sort((a, b) => {
   if (a.pinned === b.pinned) return 0;
@@ -12,7 +17,7 @@ export default function Projects() {
   return (
     <section className="py-12 md:py-24 max-w-5xl mx-auto space-y-12 font-light">
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-mono lowercase">
-        <span className="text-red-500">/</span> projects <span className="text-2xl">🚀</span>
+        <span className="text-red-500">/</span> projects
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,4 +1,9 @@
 import { Download } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CV",
+};
 
 export default function CV() {
   const cvPath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined

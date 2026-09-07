@@ -9,7 +9,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
+  title: {
+    template: "%s | Dan-Ioan Vinersar",
+    default: "Dan-Ioan Vinersar",
+  },
   description: "A simple portfolio site for Vinersar Dan-Ioan",
 };
 
