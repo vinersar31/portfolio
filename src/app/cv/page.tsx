@@ -329,9 +329,6 @@ export default function CV() {
                 <BarChart3 className="w-3.5 h-3.5 text-primary" />
                 MOST USED LANGUAGES
               </span>
-              <span className="font-mono text-[10px] text-primary font-medium">
-                GitHub Breakdown
-              </span>
             </div>
 
             {/* Proportional Multi-Segment Progress Bar */}
