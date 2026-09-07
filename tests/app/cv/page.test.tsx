@@ -33,6 +33,13 @@ describe('CV Page', () => {
     expect(screen.getByText(/ausy technologies, sibiu/i)).toBeInTheDocument();
   });
 
+  it('renders company logos for Aumovio, Continental, and Ausy Technologies', () => {
+    render(<CV />);
+    expect(screen.getByAltText(/aumovio logo/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/continental logo/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/ausy technologies logo/i)).toBeInTheDocument();
+  });
+
   it('renders academic foundations with degree details', () => {
     render(<CV />);
     expect(screen.getByRole('heading', { name: /academic foundations/i })).toBeInTheDocument();

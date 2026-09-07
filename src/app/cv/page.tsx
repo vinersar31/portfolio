@@ -1,7 +1,17 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import { cvData, generateCvMarkdown } from "@/data/cv";
+import aumovioLogo from "@/../public/images/companies/aumovio.svg";
+import continentalLogo from "@/../public/images/companies/continental.svg";
+import ausyLogo from "@/../public/images/companies/ausy.png";
+
+const companyLogos: Record<string, typeof aumovioLogo> = {
+  Aumovio: aumovioLogo,
+  Continental: continentalLogo,
+  "Ausy Technologies": ausyLogo,
+};
 import {
   Download,
   Copy,
@@ -165,22 +175,35 @@ export default function CV() {
                   key={`${exp.company}-${exp.startDate}`}
                   className="group p-6 rounded-xl bg-card border border-border shadow-xs hover:border-primary/40 hover:shadow-md transition-all duration-200"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg md:text-xl font-bold font-mono text-foreground">
-                          {exp.title}
-                        </h3>
-                        {exp.active && (
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        )}
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3.5">
+                      {companyLogos[exp.company] && (
+                        <div className="h-11 w-24 sm:w-28 rounded-lg bg-white px-2.5 py-1.5 flex items-center justify-center shrink-0 border border-border/80 shadow-xs group-hover:border-primary/40 transition-colors">
+                          <Image
+                            src={companyLogos[exp.company]}
+                            alt={`${exp.company} logo`}
+                            width={110}
+                            height={28}
+                            className="h-full w-auto max-w-full object-contain"
+                          />
+                        </div>
+                      )}
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-lg md:text-xl font-bold font-mono text-foreground">
+                            {exp.title}
+                          </h3>
+                          {exp.active && (
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                          )}
+                        </div>
+                        <span className="font-mono text-xs text-primary font-medium">
+                          {exp.company}, {exp.location}
+                        </span>
                       </div>
-                      <span className="font-mono text-xs text-primary font-medium">
-                        {exp.company}, {exp.location}
-                      </span>
                     </div>
 
-                    <span className="font-mono text-[11px] text-muted-foreground uppercase sm:text-right">
+                    <span className="font-mono text-[11px] text-muted-foreground uppercase sm:text-right shrink-0 sm:pt-1">
                       {exp.period}
                     </span>
                   </div>

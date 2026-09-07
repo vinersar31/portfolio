@@ -25,6 +25,7 @@ export interface ExperienceItem {
   bullets?: BulletPoint[];
   tags: string[];
   active?: boolean;
+  logo?: string;
 }
 
 export interface EducationItem {
@@ -79,6 +80,7 @@ export const cvData: CvData = {
       description:
         "Developing a real-time data acquisition framework deployed on an ARM development board (Radxa Zero 3W), engineered to maintain strict real-time constraints for in-car automotive usage and deterministic systems architecture.",
       tags: ["C++", "ARM (Radxa Zero 3W)", "Real-Time / In-Car", "Data Acquisition"],
+      logo: "/images/companies/aumovio.svg",
     },
     {
       title: "Senior Software Engineer",
@@ -87,6 +89,7 @@ export const cvData: CvData = {
       startDate: "2022-09",
       endDate: "2025-09",
       period: "SEPTEMBER 2022 — SEPTEMBER 2025",
+      logo: "/images/companies/continental.svg",
       description:
         "Developed simulation framework for Advanced Driver Assistance Systems (ADAS). Joined a team developing a new framework, using C++ (backend) and JavaScript (frontend).",
       bullets: [
@@ -128,6 +131,7 @@ export const cvData: CvData = {
       startDate: "2020-12",
       endDate: "2021-06",
       period: "DECEMBER 2020 — JUNE 2021",
+      logo: "/images/companies/ausy.png",
       description:
         "Developed Bluetooth detection application with ESP32 series Espressif board. Used C, Eclipse IDE, and Espressif extension. Managed version control via GitLab on Debian OS.",
       tags: ["Embedded C", "ESP32", "Bluetooth", "GitLab", "Debian OS"],
