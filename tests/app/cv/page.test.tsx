@@ -45,6 +45,8 @@ describe('CV Page', () => {
     expect(screen.getByRole('heading', { name: /academic foundations/i })).toBeInTheDocument();
     expect(screen.getByText(/project management/i)).toBeInTheDocument();
     expect(screen.getByText(/computer science and computer engineering/i)).toBeInTheDocument();
+    expect(screen.queryByText(/specialization/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/core curriculum/i)).not.toBeInTheDocument();
   });
 
   it('renders quick-strip metrics ribbon and competency stack', () => {

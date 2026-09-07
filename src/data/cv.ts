@@ -33,8 +33,8 @@ export interface EducationItem {
   field: string;
   institution: string;
   period: string;
-  specializationLabel: string;
-  specializationText: string;
+  specializationLabel?: string;
+  specializationText?: string;
 }
 
 export interface SkillCategory {
@@ -143,18 +143,12 @@ export const cvData: CvData = {
       field: "Project Management",
       institution: "Faculty of Engineering, Sibiu",
       period: "OCTOBER 2023 — JULY 2025",
-      specializationLabel: "SPECIALIZATION",
-      specializationText:
-        "Advanced project lifecycle planning, agile engineering workflows, and resource optimization.",
     },
     {
       degree: "Bachelor's Degree",
       field: "Computer Science and Computer Engineering",
       institution: "Faculty of Engineering, Sibiu",
       period: "OCTOBER 2017 — JULY 2021",
-      specializationLabel: "CORE CURRICULUM",
-      specializationText:
-        "Embedded systems, computer architecture, algorithms, operating systems, and real-time programming.",
     },
   ],
   skills: [
@@ -229,7 +223,9 @@ export function generateCvMarkdown(data: CvData = cvData): string {
     lines.push("");
     lines.push(`### ${edu.degree} — ${edu.field}`);
     lines.push(`*${edu.institution} | ${edu.period}*`);
-    lines.push(`- **${edu.specializationLabel}:** ${edu.specializationText}`);
+    if (edu.specializationLabel && edu.specializationText) {
+      lines.push(`- **${edu.specializationLabel}:** ${edu.specializationText}`);
+    }
   });
 
   lines.push("");

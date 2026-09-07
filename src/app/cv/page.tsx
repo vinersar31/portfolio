@@ -288,10 +288,10 @@ export default function CV() {
               {cvData.education.map((edu) => (
                 <article
                   key={edu.degree}
-                  className="p-6 rounded-xl bg-card border border-border shadow-xs flex flex-col justify-between hover:border-primary/40 transition-all duration-200"
+                  className="p-6 rounded-xl bg-card border border-border shadow-xs flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all duration-200"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
                       <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-mono text-[10px] uppercase font-semibold">
                         {edu.degree}
                       </span>
@@ -300,25 +300,13 @@ export default function CV() {
                       </span>
                     </div>
 
-                    <h3 className="text-base md:text-lg font-bold font-mono text-foreground mb-1">
+                    <h3 className="text-base md:text-lg font-bold font-mono text-foreground">
                       {edu.field}
                     </h3>
-                    <p className="text-muted-foreground text-xs font-mono mb-4">
-                      {edu.institution}
-                    </p>
-
-                    <div className="p-3 rounded-lg bg-secondary/50 border border-border/40 mb-4">
-                      <span className="font-mono text-[10px] text-primary block mb-1 font-semibold uppercase">
-                        {edu.specializationLabel}
-                      </span>
-                      <p className="font-mono text-xs text-foreground/90 leading-relaxed">
-                        {edu.specializationText}
-                      </p>
-                    </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
-                    <GraduationCap className="w-4 h-4 text-primary" />
+                  <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground pt-4 border-t border-border/40 mt-4">
+                    <GraduationCap className="w-4 h-4 text-primary shrink-0" />
                     <span>{edu.institution}</span>
                   </div>
                 </article>
