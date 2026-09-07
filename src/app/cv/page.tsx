@@ -12,9 +12,7 @@ import {
   Users,
   Wrench,
   GraduationCap,
-  Sparkles,
   BarChart3,
-  Printer,
 } from "lucide-react";
 
 export default function CV() {
@@ -36,12 +34,8 @@ export default function CV() {
     }
   }, []);
 
-  const handlePrint = useCallback(() => {
-    window.print();
-  }, []);
-
   return (
-    <section className="py-8 md:py-16 max-w-5xl mx-auto space-y-10 font-light animate-fade-in-up print:py-0 print:space-y-6">
+    <section className="py-8 md:py-16 max-w-5xl mx-auto space-y-10 font-light animate-fade-in-up">
       {/* Hero / Introduction Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
         <div className="flex flex-col gap-3 max-w-2xl">
@@ -69,7 +63,7 @@ export default function CV() {
         </div>
 
         {/* Action Panel */}
-        <div className="flex flex-wrap items-center gap-3 shrink-0 print:hidden">
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
           {/* Copy Markdown Button */}
           <button
             onClick={handleCopyMarkdown}
@@ -93,16 +87,6 @@ export default function CV() {
             </span>
           </button>
 
-          {/* Print / Save as PDF Button */}
-          <button
-            onClick={handlePrint}
-            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-card hover:bg-secondary border border-border text-muted-foreground hover:text-foreground font-mono text-xs transition-colors cursor-pointer"
-            title="Print or Save as PDF"
-          >
-            <Printer className="w-4 h-4 text-primary" />
-            <span>Print</span>
-          </button>
-
           {/* Download PDF Button */}
           <a
             href={cvPath}
@@ -117,7 +101,7 @@ export default function CV() {
       </div>
 
       {/* Quick-Strip Metrics Bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-card border border-border shadow-xs print:border-neutral-300">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-card border border-border shadow-xs">
         <div className="flex flex-col">
           <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
             CURRENT ROLE
