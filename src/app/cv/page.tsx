@@ -158,90 +158,115 @@ export default function CV() {
               </span>
             </div>
 
-            {/* Experience Cards */}
-            <div className="flex flex-col gap-6">
-              {cvData.experience.map((exp) => (
-                <article
-                  key={`${exp.company}-${exp.startDate}`}
-                  className="group p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xs hover:border-primary/40 hover:shadow-md transition-all duration-200 space-y-5"
-                >
-                  {/* Card Header Strip: Symmetrically Balances Logo + Company on Left, Period on Right */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/50">
-                    <div className="flex items-center gap-3">
-                      {companyLogos[exp.company] && (
-                        <div className="h-9 w-24 sm:w-28 rounded-lg bg-white px-2.5 py-1 flex items-center justify-center shrink-0 border border-border/80 shadow-xs">
-                          <Image
-                            src={companyLogos[exp.company]}
-                            alt={`${exp.company} logo`}
-                            width={100}
-                            height={24}
-                            className="h-full w-auto max-w-full object-contain"
-                          />
+            {/* Connected Professional Trajectory Stream */}
+            <div className="relative pl-6 sm:pl-8 ml-2 sm:ml-3">
+              {/* Continuous Vertical Trajectory Spine */}
+              <div className="absolute left-[7px] sm:left-[11px] top-8 bottom-8 w-[2px] bg-gradient-to-b from-primary via-border to-border/30 pointer-events-none" />
+
+              <div className="flex flex-col gap-6">
+                {cvData.experience.map((exp, expIdx) => (
+                  <div key={`${exp.company}-${exp.startDate}`} className="relative group">
+                    {/* Milestone Node on Spine */}
+                    <div
+                      className={`absolute -left-6 sm:-left-8 top-[34px] w-4 h-4 rounded-full border-2 transition-all duration-200 flex items-center justify-center -translate-x-[1px] bg-background z-10 ${
+                        expIdx === 0
+                          ? "border-primary shadow-[0_0_12px_rgba(59,130,246,0.6)]"
+                          : "border-muted-foreground/40 group-hover:border-primary group-hover:shadow-[0_0_8px_rgba(59,130,246,0.3)]"
+                      }`}
+                    >
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                          expIdx === 0
+                            ? "bg-primary animate-pulse"
+                            : "bg-muted-foreground/40 group-hover:bg-primary"
+                        }`}
+                      />
+                    </div>
+
+                    {/* Horizontal Connector Arm from Spine to Card */}
+                    <div className="absolute -left-4 sm:-left-6 top-[41px] w-4 sm:w-6 h-[2px] bg-border/60 group-hover:bg-primary/40 transition-colors pointer-events-none" />
+
+                    {/* Experience Card */}
+                    <article className="p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xs hover:border-primary/40 hover:shadow-md transition-all duration-200 space-y-5">
+                      {/* Card Header Strip: Symmetrically Balances Logo + Company on Left, Period on Right */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/50">
+                        <div className="flex items-center gap-3">
+                          {companyLogos[exp.company] && (
+                            <div className="h-9 w-24 sm:w-28 rounded-lg bg-white px-2.5 py-1 flex items-center justify-center shrink-0 border border-border/80 shadow-xs">
+                              <Image
+                                src={companyLogos[exp.company]}
+                                alt={`${exp.company} logo`}
+                                width={100}
+                                height={24}
+                                className="h-full w-auto max-w-full object-contain"
+                              />
+                            </div>
+                          )}
+                          <span className="font-mono text-xs text-primary font-medium">
+                            {exp.company}, {exp.location}
+                          </span>
+                        </div>
+
+                        <span className="px-2.5 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-[11px] tracking-wider font-mono shrink-0">
+                          {exp.period}
+                        </span>
+                      </div>
+
+                      {/* Job Title - Unconstrained 1-Line Width */}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold font-mono text-foreground tracking-tight">
+                          {exp.title}
+                        </h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-light">
+                        {exp.description}
+                      </p>
+
+                      {/* Bullet Highlights */}
+                      {exp.bullets && exp.bullets.length > 0 && (
+                        <div className="space-y-2.5 pt-1">
+                          {exp.bullets.map((bullet, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-start gap-3 text-xs sm:text-sm"
+                            >
+                              <span className="text-primary font-mono shrink-0 mt-0.5 p-1 rounded-md bg-primary/10">
+                                {idx === 0 && <Code2 className="w-3.5 h-3.5" />}
+                                {idx === 1 && <CheckCircle2 className="w-3.5 h-3.5" />}
+                                {idx === 2 && <Layers className="w-3.5 h-3.5" />}
+                                {idx === 3 && <Users className="w-3.5 h-3.5" />}
+                                {idx >= 4 && <Wrench className="w-3.5 h-3.5" />}
+                              </span>
+                              <span className="text-muted-foreground leading-relaxed">
+                                {bullet.title && (
+                                  <strong className="text-foreground font-medium mr-1.5">
+                                    {bullet.title}:
+                                  </strong>
+                                )}
+                                {bullet.text}
+                              </span>
+                            </div>
+                          ))}
                         </div>
                       )}
-                      <span className="font-mono text-xs text-primary font-medium">
-                        {exp.company}, {exp.location}
-                      </span>
-                    </div>
 
-                    <span className="px-2.5 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-[11px] tracking-wider font-mono shrink-0">
-                      {exp.period}
-                    </span>
-                  </div>
-
-                  {/* Job Title - Unconstrained 1-Line Width */}
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold font-mono text-foreground tracking-tight">
-                      {exp.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-light">
-                    {exp.description}
-                  </p>
-
-                  {/* Bullet Highlights */}
-                  {exp.bullets && exp.bullets.length > 0 && (
-                    <div className="space-y-2.5 pt-1">
-                      {exp.bullets.map((bullet, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-3 text-xs sm:text-sm"
-                        >
-                          <span className="text-primary font-mono shrink-0 mt-0.5 p-1 rounded-md bg-primary/10">
-                            {idx === 0 && <Code2 className="w-3.5 h-3.5" />}
-                            {idx === 1 && <CheckCircle2 className="w-3.5 h-3.5" />}
-                            {idx === 2 && <Layers className="w-3.5 h-3.5" />}
-                            {idx === 3 && <Users className="w-3.5 h-3.5" />}
-                            {idx >= 4 && <Wrench className="w-3.5 h-3.5" />}
+                      {/* Tech Tags */}
+                      <div className="pt-3 border-t border-border/40 flex flex-wrap items-center gap-1.5">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground font-mono text-[11px] border border-border/40"
+                          >
+                            {tag}
                           </span>
-                          <span className="text-muted-foreground leading-relaxed">
-                            {bullet.title && (
-                              <strong className="text-foreground font-medium mr-1.5">
-                                {bullet.title}:
-                              </strong>
-                            )}
-                            {bullet.text}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tech Tags */}
-                  <div className="pt-3 border-t border-border/40 flex flex-wrap items-center gap-1.5">
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground font-mono text-[11px] border border-border/40"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                        ))}
+                      </div>
+                    </article>
                   </div>
-                </article>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
