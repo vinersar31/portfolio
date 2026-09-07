@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { cvData, generateCvMarkdown } from "@/data/cv";
 import aumovioLogo from "@/../public/images/companies/aumovio.svg";
@@ -28,10 +28,26 @@ import {
 export default function CV() {
   const [copied, setCopied] = useState(false);
 
-  const cvPath =
-    process.env.NEXT_PUBLIC_BASE_PATH !== undefined
+  const [cvPath, setCvPath] = useState(
+    process.env.NEXT_PUBLIC_BASE_PATH
       ? `${process.env.NEXT_PUBLIC_BASE_PATH}/cv.pdf`
-      : "/portfolio/cv.pdf";
+      : "/cv.pdf"
+  );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isSubpath = window.location.pathname.startsWith("/portfolio");
+      setCvPath(isSubpath ? "/portfolio/cv.pdf" : "/cv.pdf");
+    }
+  }, []);
+
+  const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window !== "undefined") {
+      const isSubpath = window.location.pathname.startsWith("/portfolio");
+      const targetPath = isSubpath ? "/portfolio/cv.pdf" : "/cv.pdf";
+      e.currentTarget.href = targetPath;
+    }
+  };
 
   const handleCopyMarkdown = useCallback(async () => {
     try {
@@ -100,6 +116,8 @@ export default function CV() {
           {/* Download PDF Button */}
           <a
             href={cvPath}
+            onClick={handleDownloadClick}
+            download="Vinersar_Dan_Ioan_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-mono text-xs font-semibold hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
