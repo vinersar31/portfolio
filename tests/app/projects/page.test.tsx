@@ -5,7 +5,7 @@ import Projects from '@/app/projects/page';
 describe('Projects Page', () => {
   it('renders the projects page header', () => {
     render(<Projects />);
-    const heading = screen.getByRole('heading', { name: /\/ projects 🚀/i });
+    const heading = screen.getByRole('heading', { name: /\/ projects/i });
     expect(heading).toBeInTheDocument();
   });
 

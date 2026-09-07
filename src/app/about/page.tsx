@@ -1,4 +1,9 @@
 import { SKILLS, THINGS_I_ENJOY } from "@/data/about";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+};
 
 function ListItem({ icon, text }: { icon: string; text: string }) {
   return (
@@ -12,7 +17,7 @@ export default function About() {
   return (
     <section className="py-12 md:py-24 max-w-3xl mx-auto space-y-8 font-light">
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-mono lowercase">
-        <span className="text-red-500">/</span> hi there <span className="text-2xl">👋</span>
+        <span className="text-red-500">/</span> hi there
       </h1>
 
       <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">

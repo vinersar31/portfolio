@@ -5,7 +5,7 @@ import About from '@/app/about/page';
 describe('About Page', () => {
   it('renders the main greeting header', () => {
     render(<About />);
-    const heading = screen.getByRole('heading', { name: /\/ hi there 👋/i });
+    const heading = screen.getByRole('heading', { name: /\/ hi there/i });
     expect(heading).toBeInTheDocument();
   });
 
