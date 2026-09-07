@@ -301,7 +301,6 @@ export default function CV() {
                   Competency Stack
                 </h3>
               </div>
-              <span className="font-mono text-xs text-primary font-medium">eval()</span>
             </div>
 
             {cvData.skills.map((skillGroup) => (
