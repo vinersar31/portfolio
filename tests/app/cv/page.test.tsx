@@ -51,7 +51,9 @@ describe('CV Page', () => {
     render(<CV />);
     expect(screen.getByText(/current role/i)).toBeInTheDocument();
     expect(screen.getByText(/senior swe @ aumovio/i)).toBeInTheDocument();
-    expect(screen.getByText(/active at aumovio/i)).toBeInTheDocument();
+    expect(screen.getByText(/adas & simulation/i)).toBeInTheDocument();
+    expect(screen.queryByText(/^status$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/active role/i)).not.toBeInTheDocument();
     expect(screen.getByText(/competency stack/i)).toBeInTheDocument();
     expect(screen.getByText(/c\+\+20/i)).toBeInTheDocument();
     expect(screen.getByText(/most used languages/i)).toBeInTheDocument();

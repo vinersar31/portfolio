@@ -111,7 +111,7 @@ export default function CV() {
       </div>
 
       {/* Quick-Strip Metrics Bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-card border border-border shadow-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-card border border-border shadow-xs">
         <div className="flex flex-col">
           <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
             CURRENT ROLE
@@ -136,16 +136,6 @@ export default function CV() {
           </span>
           <span className="font-mono text-xs sm:text-sm font-semibold text-foreground">
             ADAS &amp; Simulation
-          </span>
-        </div>
-
-        <div className="flex flex-col">
-          <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
-            STATUS
-          </span>
-          <span className="font-mono text-xs sm:text-sm font-semibold text-emerald-500 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Active at Aumovio
           </span>
         </div>
       </div>
@@ -194,17 +184,9 @@ export default function CV() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2.5 shrink-0 font-mono text-xs">
-                      {exp.active && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[11px] font-semibold border border-emerald-500/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Active Role
-                        </span>
-                      )}
-                      <span className="px-2.5 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-[11px] tracking-wider font-mono">
-                        {exp.period}
-                      </span>
-                    </div>
+                    <span className="px-2.5 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-[11px] tracking-wider font-mono shrink-0">
+                      {exp.period}
+                    </span>
                   </div>
 
                   {/* Job Title - Unconstrained 1-Line Width */}
