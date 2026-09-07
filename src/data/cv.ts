@@ -153,16 +153,16 @@ export const cvData: CvData = {
   ],
   skills: [
     {
-      category: "LANGUAGES & DIALECTS",
-      items: ["C++20", "Python 3.12", "Rust", "C#", "SQL", "Bash / Zsh"],
+      category: "C++ & CORE LANGUAGES",
+      items: ["C++20", "C++17", "Python 3.12", "CMake", "Rust", "C#"],
     },
     {
-      category: "AUTONOMOUS & SYSTEMS",
-      items: ["ROS2", "OpenCV", "PCL (Point Cloud)", "PyTorch", "CUDA Toolkit", "Eigen3"],
+      category: "AI, ML & JUPYTER NOTEBOOKS",
+      items: ["TensorFlow", "PyTorch", "JupyterLab", "OpenCV", "CUDA Toolkit", "NumPy / Pandas", "Scikit-Learn"],
     },
     {
-      category: "INFRA & TELEMETRY",
-      items: ["Docker", "Kubernetes", "Prometheus", "Grafana", "Linux Kernel / eBPF", "CI/CD Pipelines"],
+      category: "CLOUD, AUTONOMOUS & INFRA",
+      items: ["AWS", "ROS2", "Docker", "Kubernetes", "Linux / eBPF", "CI/CD Pipelines"],
     },
   ],
   languageStats: [

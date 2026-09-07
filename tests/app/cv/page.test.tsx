@@ -58,6 +58,11 @@ describe('CV Page', () => {
     expect(screen.queryByText(/active role/i)).not.toBeInTheDocument();
     expect(screen.getByText(/competency stack/i)).toBeInTheDocument();
     expect(screen.getByText(/c\+\+20/i)).toBeInTheDocument();
+    expect(screen.getByText(/aws/i)).toBeInTheDocument();
+    expect(screen.getByText(/tensorflow/i)).toBeInTheDocument();
+    expect(screen.getByText(/jupyterlab/i)).toBeInTheDocument();
+    expect(screen.queryByText(/^sql$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/bash \/ zsh/i)).not.toBeInTheDocument();
     expect(screen.getByText(/most used languages/i)).toBeInTheDocument();
   });
 
