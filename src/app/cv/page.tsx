@@ -158,6 +158,86 @@ export default function CV() {
         </div>
       </div>
 
+      {/* Technology & Competency Stack and Most Used Languages */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Technology & Competency Stack Card (7 cols) */}
+        <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-card border border-border shadow-xs flex flex-col justify-between space-y-6 hover:border-primary/30 transition-all">
+          <div className="flex items-center justify-between pb-3 border-b border-border">
+            <div className="flex items-center gap-2">
+              <span className="text-primary font-mono font-bold text-lg">#</span>
+              <h3 className="text-lg font-bold font-mono text-foreground">
+                Technology &amp; Competency Stack
+              </h3>
+            </div>
+          </div>
+
+          <div className="space-y-5 flex-1">
+            {cvData.skills.map((skillGroup) => (
+              <div key={skillGroup.category} className="space-y-2">
+                <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block font-semibold">
+                  {skillGroup.category}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 rounded-lg bg-secondary text-foreground font-mono text-xs hover:border-primary/40 transition-colors border border-border/40"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* GitHub Language Breakdown Visualizer (5 cols) */}
+        <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-card border border-border shadow-xs flex flex-col justify-between space-y-6 hover:border-primary/30 transition-all">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-2 font-semibold">
+              <BarChart3 className="w-4 h-4 text-primary" />
+              MOST USED LANGUAGES
+            </span>
+          </div>
+
+          <div className="space-y-6 flex-1 flex flex-col justify-center">
+            {/* Proportional Multi-Segment Progress Bar */}
+            <div className="w-full h-3.5 rounded-full overflow-hidden flex bg-secondary p-0.5 gap-0.5 shadow-inner">
+              {cvData.languageStats.map((stat, idx) => (
+                <div
+                  key={stat.name}
+                  className={`h-full ${idx === 0 ? "rounded-l-full" : ""} ${
+                    idx === cvData.languageStats.length - 1 ? "rounded-r-full" : ""
+                  }`}
+                  style={{
+                    width: `${stat.percentage}%`,
+                    backgroundColor: stat.color,
+                  }}
+                  title={`${stat.name} ${stat.percentage}%`}
+                />
+              ))}
+            </div>
+
+            {/* Legend Chips */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono pt-2">
+              {cvData.languageStats.map((stat) => (
+                <div key={stat.name} className="flex items-center gap-2">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ backgroundColor: stat.color }}
+                  />
+                  <span className="text-muted-foreground truncate">{stat.name}</span>
+                  <span className="text-foreground/70 font-semibold ml-auto">
+                    {stat.percentage}%
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Professional Trajectory Section */}
       <div className="space-y-6">
         <div className="flex items-center justify-between pb-1">
@@ -325,86 +405,6 @@ export default function CV() {
               </div>
             </article>
           ))}
-        </div>
-      </div>
-
-      {/* Competencies & Language Analytics: Side-by-Side on Desktop */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        {/* Competency Stack Card (7 cols) */}
-        <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-card border border-border shadow-xs flex flex-col justify-between space-y-6 hover:border-primary/30 transition-all">
-          <div className="flex items-center justify-between pb-3 border-b border-border">
-            <div className="flex items-center gap-2">
-              <span className="text-primary font-mono font-bold text-lg">#</span>
-              <h3 className="text-lg font-bold font-mono text-foreground">
-                Competency Stack
-              </h3>
-            </div>
-          </div>
-
-          <div className="space-y-5 flex-1">
-            {cvData.skills.map((skillGroup) => (
-              <div key={skillGroup.category} className="space-y-2">
-                <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block font-semibold">
-                  {skillGroup.category}
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3 py-1.5 rounded-lg bg-secondary text-foreground font-mono text-xs hover:border-primary/40 transition-colors border border-border/40"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* GitHub Language Breakdown Visualizer (5 cols) */}
-        <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-card border border-border shadow-xs flex flex-col justify-between space-y-6 hover:border-primary/30 transition-all">
-          <div className="flex justify-between items-center pb-3 border-b border-border">
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-2 font-semibold">
-              <BarChart3 className="w-4 h-4 text-primary" />
-              MOST USED LANGUAGES
-            </span>
-          </div>
-
-          <div className="space-y-6 flex-1 flex flex-col justify-center">
-            {/* Proportional Multi-Segment Progress Bar */}
-            <div className="w-full h-3.5 rounded-full overflow-hidden flex bg-secondary p-0.5 gap-0.5 shadow-inner">
-              {cvData.languageStats.map((stat, idx) => (
-                <div
-                  key={stat.name}
-                  className={`h-full ${idx === 0 ? "rounded-l-full" : ""} ${
-                    idx === cvData.languageStats.length - 1 ? "rounded-r-full" : ""
-                  }`}
-                  style={{
-                    width: `${stat.percentage}%`,
-                    backgroundColor: stat.color,
-                  }}
-                  title={`${stat.name} ${stat.percentage}%`}
-                />
-              ))}
-            </div>
-
-            {/* Legend Chips */}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-mono pt-2">
-              {cvData.languageStats.map((stat) => (
-                <div key={stat.name} className="flex items-center gap-2">
-                  <span
-                    className="w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{ backgroundColor: stat.color }}
-                  />
-                  <span className="text-muted-foreground truncate">{stat.name}</span>
-                  <span className="text-foreground/70 font-semibold ml-auto">
-                    {stat.percentage}%
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
