@@ -169,63 +169,70 @@ export default function CV() {
             </div>
 
             {/* Experience Cards */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6">
               {cvData.experience.map((exp) => (
                 <article
                   key={`${exp.company}-${exp.startDate}`}
-                  className="group p-6 rounded-xl bg-card border border-border shadow-xs hover:border-primary/40 hover:shadow-md transition-all duration-200"
+                  className="group p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-xs hover:border-primary/40 hover:shadow-md transition-all duration-200 space-y-5"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3.5">
+                  {/* Card Header Strip: Symmetrically Balances Logo + Company on Left, Period on Right */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/50">
+                    <div className="flex items-center gap-3">
                       {companyLogos[exp.company] && (
-                        <div className="h-11 w-24 sm:w-28 rounded-lg bg-white px-2.5 py-1.5 flex items-center justify-center shrink-0 border border-border/80 shadow-xs group-hover:border-primary/40 transition-colors">
+                        <div className="h-9 w-24 sm:w-28 rounded-lg bg-white px-2.5 py-1 flex items-center justify-center shrink-0 border border-border/80 shadow-xs">
                           <Image
                             src={companyLogos[exp.company]}
                             alt={`${exp.company} logo`}
-                            width={110}
-                            height={28}
+                            width={100}
+                            height={24}
                             className="h-full w-auto max-w-full object-contain"
                           />
                         </div>
                       )}
-                      <div className="flex flex-col">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-lg md:text-xl font-bold font-mono text-foreground">
-                            {exp.title}
-                          </h3>
-                          {exp.active && (
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                          )}
-                        </div>
-                        <span className="font-mono text-xs text-primary font-medium">
-                          {exp.company}, {exp.location}
-                        </span>
-                      </div>
+                      <span className="font-mono text-xs text-primary font-medium">
+                        {exp.company}, {exp.location}
+                      </span>
                     </div>
 
-                    <span className="font-mono text-[11px] text-muted-foreground uppercase sm:text-right shrink-0 sm:pt-1">
-                      {exp.period}
-                    </span>
+                    <div className="flex items-center gap-2.5 shrink-0 font-mono text-xs">
+                      {exp.active && (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[11px] font-semibold border border-emerald-500/20">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          Active Role
+                        </span>
+                      )}
+                      <span className="px-2.5 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-[11px] tracking-wider font-mono">
+                        {exp.period}
+                      </span>
+                    </div>
                   </div>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  {/* Job Title - Unconstrained 1-Line Width */}
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold font-mono text-foreground tracking-tight">
+                      {exp.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed font-light">
                     {exp.description}
                   </p>
 
                   {/* Bullet Highlights */}
                   {exp.bullets && exp.bullets.length > 0 && (
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-2.5 pt-1">
                       {exp.bullets.map((bullet, idx) => (
                         <div
                           key={idx}
-                          className="flex items-start gap-2.5 text-xs md:text-sm"
+                          className="flex items-start gap-3 text-xs sm:text-sm"
                         >
-                          <span className="text-primary font-mono shrink-0 mt-0.5">
-                            {idx === 0 && <Code2 className="w-4 h-4 inline" />}
-                            {idx === 1 && <CheckCircle2 className="w-4 h-4 inline" />}
-                            {idx === 2 && <Layers className="w-4 h-4 inline" />}
-                            {idx === 3 && <Users className="w-4 h-4 inline" />}
-                            {idx >= 4 && <Wrench className="w-4 h-4 inline" />}
+                          <span className="text-primary font-mono shrink-0 mt-0.5 p-1 rounded-md bg-primary/10">
+                            {idx === 0 && <Code2 className="w-3.5 h-3.5" />}
+                            {idx === 1 && <CheckCircle2 className="w-3.5 h-3.5" />}
+                            {idx === 2 && <Layers className="w-3.5 h-3.5" />}
+                            {idx === 3 && <Users className="w-3.5 h-3.5" />}
+                            {idx >= 4 && <Wrench className="w-3.5 h-3.5" />}
                           </span>
                           <span className="text-muted-foreground leading-relaxed">
                             {bullet.title && (
@@ -241,11 +248,11 @@ export default function CV() {
                   )}
 
                   {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  <div className="pt-3 border-t border-border/40 flex flex-wrap items-center gap-1.5">
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 rounded bg-secondary text-secondary-foreground font-mono text-[11px]"
+                        className="px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground font-mono text-[11px] border border-border/40"
                       >
                         {tag}
                       </span>
