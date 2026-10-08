@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { projects, Project, ProjectCategory } from "@/data/projects";
+import { projects, ProjectCategory } from "@/data/projects";
 import { ExternalLink, Lock, Pin, Sparkles, Clock, Globe } from "lucide-react";
 
 const CATEGORIES: { id: "all" | ProjectCategory; label: string }[] = [
@@ -10,6 +10,15 @@ const CATEGORIES: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "infra", label: "Infrastructure" },
   { id: "academic", label: "Academic & Apps" },
 ];
+
+const CATEGORY_COUNTS = Object.fromEntries(
+  CATEGORIES.map((cat) => [
+    cat.id,
+    cat.id === "all"
+      ? projects.length
+      : projects.filter((p) => p.category === cat.id).length,
+  ])
+) as Record<string, number>;
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<"all" | ProjectCategory>("all");
@@ -47,10 +56,7 @@ export default function Projects() {
       <div className="flex flex-wrap items-center gap-2 pt-1 pb-4">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat.id;
-          const count =
-            cat.id === "all"
-              ? projects.length
-              : projects.filter((p) => p.category === cat.id).length;
+          const count = CATEGORY_COUNTS[cat.id];
 
           return (
             <button
