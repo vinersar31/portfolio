@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { projects, Project, ProjectCategory } from "@/data/projects";
+import { projects, ProjectCategory } from "@/data/projects";
 import { ExternalLink, Lock, Pin, Sparkles, Clock, Globe } from "lucide-react";
 
 const CATEGORIES: { id: "all" | ProjectCategory; label: string }[] = [
