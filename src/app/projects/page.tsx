@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { projects, Project, ProjectCategory } from "@/data/projects";
 import { ExternalLink, Lock, Pin, Sparkles, Clock, Globe } from "lucide-react";
 
@@ -14,22 +14,22 @@ const CATEGORIES: { id: "all" | ProjectCategory; label: string }[] = [
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<"all" | ProjectCategory>("all");
 
-  const collisionVision = projects.find((p) => p.title === "collision vision");
+  const collisionVision = useMemo(() => projects.find((p) => p.title === "collision vision"), []);
 
   // Filter projects based on active category
-  const filteredProjects = projects.filter((p) => {
+  const filteredProjects = useMemo(() => projects.filter((p) => {
     if (activeCategory === "all") return true;
     return p.category === activeCategory;
-  });
+  }), [activeCategory]);
 
   // Projects displayed in the grid below (omit Collision Vision from grid when shown as flagship)
   const showFlagship = activeCategory === "all" || activeCategory === "vision";
-  const gridProjects = filteredProjects
+  const gridProjects = useMemo(() => filteredProjects
     .filter((p) => (showFlagship ? p.title !== "collision vision" : true))
     .sort((a, b) => {
       if (a.pinned === b.pinned) return 0;
       return a.pinned ? -1 : 1;
-    });
+    }), [filteredProjects, showFlagship]);
 
   return (
     <section className="py-8 md:py-16 max-w-5xl mx-auto space-y-10 font-light animate-fade-in-up">
