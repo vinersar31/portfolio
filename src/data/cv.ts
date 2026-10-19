@@ -59,7 +59,7 @@ export interface CvData {
 export const cvData: CvData = {
   personal: {
     name: "Vinersar Dan-Ioan",
-    location: "Sibiu, Romania (SB 550316)",
+    location: "Sibiu, Romania",
     phone: "(+40) 756705851",
     email: "danvinersar98@gmail.com",
     currentRole: "Senior Software Engineer @ Aumovio",
@@ -78,8 +78,26 @@ export const cvData: CvData = {
       period: "SEPTEMBER 2025 — PRESENT",
       active: true,
       description:
-        "Developing a real-time data acquisition framework deployed on an ARM development board (Radxa Zero 3W), engineered to maintain strict real-time constraints for in-car automotive usage and deterministic systems architecture.",
-      tags: ["C++", "ARM (Radxa Zero 3W)", "Real-Time / In-Car", "Data Acquisition"],
+        "Engineering advanced automotive software for Level 4 autonomous trucking and in-vehicle systems. Developing open-loop SIL (Software-in-the-Loop) simulation pipelines for the Aurora project partnership, alongside a deterministic real-time data acquisition framework deployed on ARM architecture (Radxa Zero 3W).",
+      bullets: [
+        {
+          title: "Aurora Autonomous Trucking (SIL Simulation)",
+          text: "Engineered Software-in-the-Loop (SIL) simulation pipelines for the Aurora project partnership, implementing open-loop replay of recorded vehicle telemetry to validate autonomous driving algorithms in deterministic virtual environments.",
+        },
+        {
+          title: "Real-Time Embedded Framework",
+          text: "Engineered and deployed a real-time data acquisition framework on an ARM development board (Radxa Zero 3W), maintaining strict real-time constraints and deterministic architecture for in-car automotive usage.",
+        },
+      ],
+      tags: [
+        "C++",
+        "Aurora Autonomous Trucking",
+        "SIL Simulation",
+        "Open Loop Replay",
+        "ARM (Radxa Zero 3W)",
+        "Real-Time / In-Car",
+        "Data Acquisition",
+      ],
       logo: "/images/companies/aumovio.svg",
     },
     {
@@ -91,7 +109,7 @@ export const cvData: CvData = {
       period: "SEPTEMBER 2022 — SEPTEMBER 2025",
       logo: "/images/companies/continental.svg",
       description:
-        "Developed simulation framework for Advanced Driver Assistance Systems (ADAS). Joined a team developing a new framework, using C++ (backend) and JavaScript (frontend).",
+        "Developed simulation framework for Advanced Driver Assistance Systems (ADAS). Joined a team developing a new framework, using C++ (backend), with the frontend based on Electron and JavaScript.",
       bullets: [
         {
           title: "Modern C++ (C++17)",
@@ -117,6 +135,7 @@ export const cvData: CvData = {
       tags: [
         "C++17",
         "ADAS Simulation",
+        "Electron",
         "JavaScript",
         "CMake",
         "Google Test",
@@ -162,7 +181,7 @@ export const cvData: CvData = {
     },
     {
       category: "CLOUD, AUTONOMOUS & INFRA",
-      items: ["AWS", "ROS2", "Docker", "Kubernetes", "Linux / eBPF", "CI/CD Pipelines"],
+      items: ["AWS", "Docker", "Kubernetes", "Linux / eBPF", "CI/CD Pipelines"],
     },
   ],
   languageStats: [
