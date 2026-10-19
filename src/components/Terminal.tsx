@@ -166,7 +166,7 @@ export function Terminal() {
             setCharIndex((prev) => prev + 1);
             setInput(currentCommand.substring(0, charIndex + 1));
           },
-          (window.crypto.getRandomValues(new Uint32Array(1))[0] / 4294967296) * 100 + 50,
+          Math.random() * 100 + 50,
         ); // Random typing speed (50-150ms)
       } else {
         // Finished typing the command
