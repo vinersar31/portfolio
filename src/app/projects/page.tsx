@@ -20,10 +20,12 @@ const CATEGORY_COUNTS = Object.fromEntries(
   ])
 ) as Record<string, number>;
 
+const COLLISION_VISION_PROJECT = projects.find((p) => p.title === "collision vision");
+
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<"all" | ProjectCategory>("all");
 
-  const collisionVision = projects.find((p) => p.title === "collision vision");
+  const collisionVision = COLLISION_VISION_PROJECT;
 
   // Filter projects based on active category
   const filteredProjects = projects.filter((p) => {
