@@ -14,7 +14,7 @@ describe('Footer', () => {
 
   it('renders the current year', () => {
     render(<Footer />)
-    expect(screen.getByText(/2024 vinersar dan-ioan/)).toBeInTheDocument()
+    expect(screen.getByText(/2024 dan-ioan vinersar/)).toBeInTheDocument()
   })
 
   it('renders social links with proper attributes', () => {
