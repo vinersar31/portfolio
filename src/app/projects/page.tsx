@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { projects, ProjectCategory } from "@/data/projects";
-import { Lock, Pin, Sparkles, Clock } from "lucide-react";
+import { ExternalLink, Lock, Pin, Sparkles, Clock, Globe } from "lucide-react";
 
 const CATEGORIES: { id: "all" | ProjectCategory; label: string }[] = [
-  { id: "all", label: "all" },
-  { id: "vision", label: "autonomous & vision" },
-  { id: "infra", label: "infrastructure" },
-  { id: "academic", label: "academic & apps" },
+  { id: "all", label: "All" },
+  { id: "vision", label: "Autonomous & Vision" },
+  { id: "infra", label: "Infrastructure" },
+  { id: "academic", label: "Academic & Apps" },
 ];
 
 const CATEGORY_COUNTS = Object.fromEntries(
@@ -43,19 +43,19 @@ export default function Projects() {
     });
 
   return (
-    <section className="mx-auto max-w-3xl space-y-10 pt-6 animate-fade-in-up">
+    <section className="py-8 md:py-16 max-w-5xl mx-auto space-y-10 font-light animate-fade-in-up">
       {/* Page Header */}
-      <div className="space-y-3">
-        <h1 className="text-[clamp(1.75rem,5vw,2.6rem)] font-semibold tracking-[-0.025em]">
-          <span className="text-primary font-mono select-none">/</span> projects
+      <div className="flex flex-col gap-2 pb-2">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-mono lowercase flex items-center gap-2">
+          <span className="text-primary select-none">/</span> projects
         </h1>
-        <p className="text-[17px] leading-relaxed text-muted-foreground max-w-2xl">
-          a selection of engineering systems, computer vision models, and personal infrastructure.
+        <p className="text-muted-foreground text-base md:text-lg max-w-2xl font-light">
+          A curated selection of engineering systems, computer vision models, and personal infrastructure.
         </p>
       </div>
 
-      {/* Category filter */}
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-border pb-3 font-mono text-sm">
+      {/* Interactive Category Filter Pills */}
+      <div className="flex flex-wrap items-center gap-2 pt-1 pb-4">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat.id;
           const count = CATEGORY_COUNTS[cat.id];
@@ -64,14 +64,22 @@ export default function Projects() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              aria-pressed={isActive}
-              className={`cursor-pointer transition-colors ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-mono text-xs transition-all duration-200 cursor-pointer ${
                 isActive
-                  ? "text-foreground underline decoration-primary decoration-2 underline-offset-[6px]"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-foreground text-background shadow-xs font-semibold"
+                  : "bg-secondary/60 hover:bg-secondary text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
               }`}
             >
-              {cat.label} <span className={isActive ? "text-primary" : ""}>{count}</span>
+              <span>{cat.label}</span>
+              <span
+                className={`px-1.5 py-0.5 rounded-full text-[10px] ${
+                  isActive
+                    ? "bg-background/20 text-background font-bold"
+                    : "bg-background/80 text-primary font-medium"
+                }`}
+              >
+                {count}
+              </span>
             </button>
           );
         })}
@@ -79,7 +87,9 @@ export default function Projects() {
 
       {/* Flagship Section: Collision Vision on Top */}
       {showFlagship && collisionVision && (
-        <article className="group relative bg-accent/60 rounded-[var(--radius)] p-6 lg:p-8">
+        <article className="group relative bg-card border border-border rounded-xl p-6 lg:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-xl overflow-hidden">
+          {/* Ambient Backlight Accent */}
+          <div className="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/15 transition-all duration-500" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Spec & Description Column */}
@@ -87,12 +97,12 @@ export default function Projects() {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <span className="text-primary font-mono font-bold text-xl">/</span>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                  <h2 className="text-2xl md:text-3xl font-bold font-mono text-foreground tracking-tight group-hover:text-primary transition-colors">
                     {collisionVision.title}
                   </h2>
                   <Pin className="w-4 h-4 text-primary rotate-45 inline-block" />
                 </div>
-                <span className="font-mono text-xs text-primary">
+                <span className="px-3 py-1 rounded-full bg-secondary text-primary font-mono text-[11px] uppercase tracking-wider font-medium">
                   {collisionVision.badge || "yolov8-seg • computer vision"}
                 </span>
               </div>
@@ -106,7 +116,7 @@ export default function Projects() {
                 {collisionVision.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-xs text-muted-foreground"
+                    className="px-2.5 py-1 rounded-md bg-secondary text-foreground font-mono text-xs"
                   >
                     {tag}
                   </span>
@@ -119,16 +129,17 @@ export default function Projects() {
                   href={collisionVision.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-sm link-underline text-foreground"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-mono text-xs font-semibold hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
-                  view repository <span aria-hidden="true">↗</span>
+                  <span>view repository</span>
+                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
             {/* Visual Telemetry Radar Component */}
             <div className="lg:col-span-5 w-full flex flex-col gap-3">
-              <div className="relative w-full rounded-[var(--radius)] bg-background border border-border p-5 overflow-hidden">
+              <div className="relative w-full rounded-xl bg-background/90 border border-border p-5 overflow-hidden shadow-inner">
                 <div className="flex items-center justify-between pb-3 text-muted-foreground">
                   <span className="font-mono text-xs text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
@@ -184,15 +195,15 @@ export default function Projects() {
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-3 gap-2 pt-3 text-center">
                   <div className="p-2 rounded bg-secondary/50 border border-border/40">
-                    <div className="font-mono text-[10px] text-muted-foreground">FPS (CUDA)</div>
+                    <div className="font-mono text-[10px] text-muted-foreground uppercase">FPS (CUDA)</div>
                     <div className="font-mono text-sm font-bold text-foreground">62.4</div>
                   </div>
                   <div className="p-2 rounded bg-secondary/50 border border-border/40">
-                    <div className="font-mono text-[10px] text-muted-foreground">LATENCY</div>
+                    <div className="font-mono text-[10px] text-muted-foreground uppercase">LATENCY</div>
                     <div className="font-mono text-sm font-bold text-emerald-500">14.2ms</div>
                   </div>
                   <div className="p-2 rounded bg-secondary/50 border border-border/40">
-                    <div className="font-mono text-[10px] text-muted-foreground">PARAMETERS</div>
+                    <div className="font-mono text-[10px] text-muted-foreground uppercase">PARAMETERS</div>
                     <div className="font-mono text-sm font-bold text-foreground">3.2M</div>
                   </div>
                 </div>
@@ -204,17 +215,17 @@ export default function Projects() {
 
       {/* Secondary Featured Card Placeholder: In development LLM/NLP makemore project */}
       {showFlagship && (
-        <article className="relative border border-dashed border-border rounded-[var(--radius)] p-6 lg:p-7">
+        <article className="group relative bg-card/40 border border-dashed border-border/80 rounded-xl p-6 lg:p-7 transition-all duration-300 hover:border-primary/40 hover:bg-card/60 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-8 flex flex-col gap-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <span className="text-primary font-mono font-bold text-lg">/</span>
-                  <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold font-mono text-foreground tracking-tight">
                     makemore: llm &amp; nlp from scratch
                   </h3>
                 </div>
-                <span className="font-mono text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                <span className="px-2.5 py-1 rounded-full bg-secondary text-amber-500 font-mono text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                   in development
                 </span>
@@ -228,7 +239,7 @@ export default function Projects() {
                 {["PyTorch", "Python", "Transformers", "NLP", "Autoregressive"].map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-xs text-muted-foreground"
+                    className="px-2 py-0.5 rounded bg-secondary/60 text-muted-foreground font-mono text-[11px]"
                   >
                     {tag}
                   </span>
@@ -243,7 +254,7 @@ export default function Projects() {
 
             {/* Neural Architecture Telemetry Box */}
             <div className="lg:col-span-4 w-full">
-              <div className="rounded-[var(--radius)] bg-background border border-border p-4 flex flex-col gap-2.5">
+              <div className="rounded-xl bg-background/80 border border-border p-4 flex flex-col gap-2.5">
                 <div className="flex items-center justify-between text-muted-foreground pb-1">
                   <span className="font-mono text-[11px] text-foreground flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-primary" />
@@ -271,55 +282,93 @@ export default function Projects() {
         </article>
       )}
 
-      {/* List of remaining projects */}
-      <ul className="border-t border-border">
+      {/* Grid of Remaining Projects */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
         {gridProjects.map((project) => (
-          <li key={project.url} className="border-b border-border py-5">
-            <article className="grid gap-2 sm:grid-cols-[1fr_auto] sm:gap-x-6">
-              <div className="min-w-0 space-y-2">
-                <h3 className="text-lg font-medium leading-snug">
-                  <span className="text-primary font-mono mr-1">/</span> {project.title}
+          <article
+            key={project.url}
+            className="group relative flex flex-col justify-between p-6 bg-card border border-border rounded-xl transition-all duration-300 hover:shadow-lg hover:border-primary/40 overflow-hidden"
+          >
+            {/* Subtle glow accent on hover */}
+            <div className="absolute -right-12 -top-12 w-40 h-40 bg-primary/5 rounded-full blur-2xl pointer-events-none group-hover:bg-primary/10 transition-all duration-500" />
+
+            <div className="space-y-4 mb-6 relative z-10">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-lg md:text-xl font-bold leading-tight group-hover:text-primary transition-colors font-mono lowercase">
+                  <span className="text-primary mr-1">/</span> {project.title}
                   {project.pinned && (
-                    <Pin className="w-3.5 h-3.5 ml-2 inline-block text-primary rotate-45" aria-label="pinned" />
+                    <Pin className="w-4 h-4 ml-2 inline-block text-primary rotate-45" />
                   )}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-[15px]">{project.description}</p>
-                {project.tags && project.tags.length > 0 && (
-                  <p className="font-mono text-xs text-muted-foreground">{project.tags.join(" · ")}</p>
+                {project.badge && (
+                  <span className="shrink-0 text-[10px] md:text-xs font-medium px-2.5 py-1 bg-secondary text-secondary-foreground rounded-full lowercase font-mono">
+                    {project.badge}
+                  </span>
                 )}
               </div>
 
-              <div className="flex flex-wrap items-start gap-x-4 gap-y-1 font-mono text-sm sm:flex-col sm:items-end sm:text-right">
-                {project.badge && <span className="text-xs text-primary">{project.badge}</span>}
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                {project.description}
+              </p>
+
+              {/* Tech Stack Badges */}
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded bg-secondary text-secondary-foreground font-mono text-[11px]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Action Links */}
+            <div className="flex flex-wrap items-center gap-2 pt-2 relative z-10">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-md transition-colors font-mono lowercase ${
+                  project.isPrivate
+                    ? "bg-destructive/10 text-destructive hover:bg-destructive/20 cursor-help"
+                    : "bg-primary text-primary-foreground hover:bg-primary/90"
+                }`}
+                title={
+                  project.isPrivate
+                    ? "Private Repository (only accessible with permission)"
+                    : "View Repository"
+                }
+              >
+                {project.isPrivate ? (
+                  <>
+                    <Lock className="w-3.5 h-3.5" /> view repository
+                  </>
+                ) : (
+                  <>
+                    <ExternalLink className="w-3.5 h-3.5" /> view repository
+                  </>
+                )}
+              </a>
+
+              {project.siteUrl && (
                 <a
-                  href={project.url}
+                  href={project.siteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={project.isPrivate ? "inline-flex items-center gap-1.5 text-muted-foreground cursor-help" : "link-underline text-foreground"}
-                  title={
-                    project.isPrivate
-                      ? "private repository (only accessible with permission)"
-                      : "view repository"
-                  }
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors font-mono lowercase"
                 >
-                  {project.isPrivate && <Lock className="w-3.5 h-3.5" aria-hidden="true" />}
-                  view repository{!project.isPrivate && <span aria-hidden="true"> ↗</span>}
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>live site</span>
                 </a>
-                {project.siteUrl && (
-                  <a
-                    href={project.siteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-underline text-foreground"
-                  >
-                    live site <span aria-hidden="true">↗</span>
-                  </a>
-                )}
-              </div>
-            </article>
-          </li>
+              )}
+            </div>
+          </article>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
