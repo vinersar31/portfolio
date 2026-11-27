@@ -57,66 +57,67 @@
 }
 
 @layer base {
+  /* direction d: lowercase & warm. one coral accent, warm-violet neutrals, no grid. */
   :root {
-    --background: 0 0% 98%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 0% 100%;
+    --foreground: 255 8% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 255 8% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 255 8% 11%;
 
-    --primary: 0 84.2% 60.2%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 10 78% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 255 10% 96%;
+    --secondary-foreground: 255 8% 18%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 255 10% 96%;
+    --muted-foreground: 255 5% 40%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 14 100% 96%;
+    --accent-foreground: 10 70% 38%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 255 9% 92%;
+    --input: 255 9% 92%;
+    --ring: 10 78% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 250 9% 7%;
+    --foreground: 40 10% 93%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 250 8% 10%;
+    --card-foreground: 40 10% 93%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 250 8% 10%;
+    --popover-foreground: 40 10% 93%;
 
-    --primary: 0 84.2% 60.2%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 10 100% 68%;
+    --primary-foreground: 250 9% 7%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 250 7% 14%;
+    --secondary-foreground: 40 10% 93%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 250 7% 14%;
+    --muted-foreground: 250 5% 64%;
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 10 40% 14%;
+    --accent-foreground: 10 100% 76%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 250 7% 17%;
+    --input: 250 7% 17%;
+    --ring: 10 100% 68%;
   }
 }
 
@@ -125,17 +126,21 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground selection:bg-primary/20 selection:text-primary;
-    /* Subtle background grid pattern for depth */
-    background-image:
-      linear-gradient(to right, hsl(var(--foreground) / 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
+    @apply bg-background text-foreground selection:bg-primary/20 selection:text-foreground;
+    /* the whole site is lowercase by design; the generated cv.pdf keeps normal casing. */
+    text-transform: lowercase;
+  }
+  /* form controls don't inherit text-transform by default */
+  button, input, textarea, select {
+    text-transform: inherit;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary rounded-sm;
   }
 }
 
-/* Glassmorphism utilities */
-.glass {
-  @apply bg-background/60 backdrop-blur-md border border-white/10 dark:border-white/5 shadow-lg;
+/* underlined text link with a coral underline */
+.link-underline {
+  @apply underline decoration-primary/70 underline-offset-4 hover:decoration-primary hover:text-primary transition-colors;
 }

@@ -65,7 +65,7 @@ export default function CV() {
       {/* Hero / Introduction Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
         <div className="flex flex-col gap-3 max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-mono lowercase flex items-center gap-2">
+          <h1 className="text-[clamp(1.75rem,5vw,2.6rem)] font-semibold tracking-[-0.025em] flex items-center gap-2">
             <span className="text-primary select-none">/</span> curriculum vitae
           </h1>
 
@@ -131,7 +131,7 @@ export default function CV() {
       {/* Quick-Strip Metrics Bar */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 sm:p-6 rounded-2xl bg-card border border-border shadow-xs">
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider font-medium">
+          <span className="font-mono text-xs text-muted-foreground tracking-wide font-medium">
             CURRENT ROLE
           </span>
           <span className="font-mono text-sm sm:text-base font-bold text-foreground">
@@ -140,7 +140,7 @@ export default function CV() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider font-medium">
+          <span className="font-mono text-xs text-muted-foreground tracking-wide font-medium">
             LOCATION
           </span>
           <span className="font-mono text-sm sm:text-base font-bold text-foreground">
@@ -149,7 +149,7 @@ export default function CV() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider font-medium">
+          <span className="font-mono text-xs text-muted-foreground tracking-wide font-medium">
             DOMAIN
           </span>
           <span className="font-mono text-sm sm:text-base font-bold text-foreground">
@@ -174,7 +174,7 @@ export default function CV() {
           <div className="space-y-5 flex-1">
             {cvData.skills.map((skillGroup) => (
               <div key={skillGroup.category} className="space-y-2">
-                <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block font-semibold">
+                <span className="font-mono text-xs text-muted-foreground tracking-wide block font-semibold">
                   {skillGroup.category}
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -195,7 +195,7 @@ export default function CV() {
         {/* GitHub Language Breakdown Visualizer (5 cols) */}
         <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-card border border-border shadow-xs flex flex-col justify-between space-y-6 hover:border-primary/30 transition-all">
           <div className="flex justify-between items-center pb-3 border-b border-border">
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-2 font-semibold">
+            <span className="font-mono text-xs text-muted-foreground tracking-wide flex items-center gap-2 font-semibold">
               <BarChart3 className="w-4 h-4 text-primary" />
               MOST USED LANGUAGES
             </span>
@@ -243,7 +243,7 @@ export default function CV() {
         <div className="flex items-center justify-between pb-1">
           <div className="flex items-center gap-2">
             <span className="text-primary font-mono font-bold text-lg">//</span>
-            <h2 className="text-xl md:text-2xl font-bold font-mono text-foreground tracking-tight">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
               Professional Trajectory
             </h2>
           </div>
@@ -301,7 +301,7 @@ export default function CV() {
                       </span>
                     </div>
 
-                    <span className="px-3 py-1 rounded-md bg-secondary text-muted-foreground uppercase text-xs tracking-wider font-mono shrink-0">
+                    <span className="px-3 py-1 rounded-md bg-secondary text-muted-foreground text-xs tracking-wider font-mono shrink-0">
                       {exp.period}
                     </span>
                   </div>
@@ -369,7 +369,7 @@ export default function CV() {
         <div className="flex items-center justify-between pb-1">
           <div className="flex items-center gap-2">
             <span className="text-primary font-mono font-bold text-lg">//</span>
-            <h2 className="text-xl md:text-2xl font-bold font-mono text-foreground tracking-tight">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
               Academic Foundations
             </h2>
           </div>
@@ -386,10 +386,10 @@ export default function CV() {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-xs uppercase font-semibold">
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-mono text-xs font-semibold">
                     {edu.degree}
                   </span>
-                  <span className="font-mono text-xs text-muted-foreground uppercase">
+                  <span className="font-mono text-xs text-muted-foreground">
                     {edu.period}
                   </span>
                 </div>

@@ -48,32 +48,32 @@ export const files: Record<string, React.ReactNode> = {
       <p>
         github:{" "}
         <a
-          href="https://github.com/vinersar"
+          href="https://github.com/vinersar31"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-400 hover:underline"
         >
-          github.com/vinersar
+          github.com/vinersar31
         </a>
       </p>
       <p>
         linkedin:{" "}
         <a
-          href="https://linkedin.com/in/vinersar"
+          href="https://www.linkedin.com/in/dan-ioan-v-6b1220218/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-400 hover:underline"
         >
-          linkedin.com/in/vinersar
+          linkedin.com/in/dan-ioan-v-6b1220218
         </a>
       </p>
       <p>
         email:{" "}
         <a
-          href="mailto:vinersar31@example.com"
+          href="mailto:danvinersar98@gmail.com"
           className="text-blue-400 hover:underline"
         >
-          vinersar31@example.com
+          danvinersar98@gmail.com
         </a>
       </p>
     </div>

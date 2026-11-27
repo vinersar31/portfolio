@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" });
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Dan-Ioan Vinersar",
     default: "Dan-Ioan Vinersar",
   },
-  description: "A simple portfolio site for Vinersar Dan-Ioan",
+  description: "dan-ioan vinersar: senior software engineer building adas simulation in c++, plus side projects in computer vision and ai.",
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${firaCode.variable} font-sans min-h-screen bg-background antialiased text-foreground`}>
+      <body className={`${geist.variable} ${geistMono.variable} font-sans min-h-screen bg-background antialiased text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -32,7 +32,7 @@ export default function RootLayout({
         >
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1 container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
+            <main className="flex-1 w-full mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-24 pb-12">
               {children}
             </main>
             <Footer />

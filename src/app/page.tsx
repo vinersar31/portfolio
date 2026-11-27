@@ -1,67 +1,118 @@
 import Image from "next/image";
+import Link from "next/link";
 import mePhoto from "@/../public/images/me.jpg";
-import { Terminal } from "@/components/Terminal";
+import { projects } from "@/data/projects";
+import { INTRO, NOW, SELECTED_WORK, SOCIAL_LINKS } from "@/data/home";
+import { TerminalToggle } from "@/components/terminal-toggle";
 
-const HELLO_LETTERS = [
-  { char: 'h', color: 'hover:text-[#ff5f56]' },
-  { char: 'e', color: 'hover:text-[#ffbd2e]' },
-  { char: 'l', color: 'hover:text-[#27c93f]' },
-  { char: 'l', color: 'hover:text-blue-500' },
-  { char: 'o', color: 'hover:text-purple-500' },
-];
+const SELECTED = SELECTED_WORK.map((item) => {
+  const project = projects.find((p) => p.title === item.title);
+  return {
+    ...item,
+    href: project?.siteUrl ?? project?.url ?? "/projects",
+    kind: project?.siteUrl ? "live" : project?.category ?? "work",
+  };
+});
+
+function Slash() {
+  return <span className="text-primary font-mono mr-1.5" aria-hidden="true">/</span>;
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-between min-h-[calc(100vh-80px)] py-12 md:py-16 pt-24">
-      {/* Background ambient glow effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 animate-float pointer-events-none" />
-
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 w-full max-w-5xl animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-        <div className="max-w-2xl text-left flex-1 relative z-10">
-          <h1 className="text-6xl md:text-8xl font-black leading-none mb-8 cursor-default tracking-tighter">
-            <span className="text-primary mr-1">/</span>
-            {HELLO_LETTERS.map(({ char, color }, i) => (
-              <span key={i} className={`inline-block transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${color}`}>
-                {char}
-              </span>
-            ))}
-          </h1>
-
-          <div className="space-y-6">
-            <p className="text-xl md:text-2xl leading-relaxed text-muted-foreground font-light">
-              <span className="text-primary font-mono font-bold mr-2">&gt;</span>
-              I&apos;m a software developer with a strong background in <strong className="text-foreground font-mono bg-foreground/5 px-1.5 py-0.5 rounded-md">C++</strong> and <strong className="text-foreground font-mono bg-foreground/5 px-1.5 py-0.5 rounded-md">ADAS systems</strong>, focused on building reliable and performance-critical applications.
-            </p>
-            <p className="text-xl md:text-2xl leading-relaxed text-muted-foreground font-light">
-              <span className="text-primary font-mono font-bold mr-2">&gt;</span>
-              I&apos;m deeply passionate about <strong className="text-foreground font-mono bg-foreground/5 px-1.5 py-0.5 rounded-md">AI</strong>, <strong className="text-foreground font-mono bg-foreground/5 px-1.5 py-0.5 rounded-md">machine learning</strong>, and <strong className="text-foreground font-mono bg-foreground/5 px-1.5 py-0.5 rounded-md">embedded systems</strong> — always exploring how these technologies can work together to solve real-world problems.
-            </p>
-          </div>
+    <div className="mx-auto flex max-w-2xl flex-col gap-10 pt-6 animate-fade-in-up">
+      <section className="flex flex-col gap-8" aria-labelledby="intro">
+        <div className="flex items-center gap-4">
+          <Image
+            src={mePhoto}
+            alt="dan-ioan vinersar"
+            width={64}
+            height={64}
+            className="h-16 w-16 rounded-full object-cover ring-2 ring-primary ring-offset-2 ring-offset-background"
+            priority
+          />
+          <p className="font-mono text-sm leading-relaxed text-muted-foreground">
+            <span aria-hidden="true">👋 </span>
+            {INTRO.greeting}
+            <br />
+            {INTRO.location}
+          </p>
         </div>
 
-        <div className="shrink-0 relative group animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          {/* Subtle glow behind image */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-blue-500/40 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <h1 id="intro" className="text-[clamp(1.75rem,5vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.025em] text-balance">
+          {INTRO.headlineStart}{" "}
+          <mark className="bg-transparent bg-[linear-gradient(transparent_62%,hsl(var(--accent))_62%)] text-inherit">
+            {INTRO.headlineHighlight}
+          </mark>{" "}
+          {INTRO.headlineEnd}
+        </h1>
 
-          <div className="relative p-1 rounded-full bg-gradient-to-br from-border to-background shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-3 group-hover:shadow-primary/20">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            <Image
-              src={mePhoto}
-              alt="My photo"
-              width={260}
-              height={260}
-              className="rounded-full object-cover relative z-10 border-4 border-background"
-              priority
-            />
-          </div>
+        <div className="space-y-3 text-[17px] leading-relaxed text-muted-foreground">
+          {INTRO.bio.map((line) => (
+            <p key={line}>
+              <Slash />
+              {line}
+            </p>
+          ))}
         </div>
+
+        <p className="flex flex-wrap gap-x-2 font-mono text-sm text-muted-foreground">
+          {SOCIAL_LINKS.map((link, i) => (
+            <span key={link.label}>
+              {i > 0 && <span className="mr-2" aria-hidden="true">/</span>}
+              {link.href.startsWith("/") ? (
+                <Link href={link.href} className="link-underline text-foreground">
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={link.href}
+                  className="link-underline text-foreground"
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {link.label}
+                </a>
+              )}
+            </span>
+          ))}
+        </p>
       </section>
 
-      <section className="w-full max-w-4xl mt-24 md:mt-32 mb-8 animate-fade-in-up relative" style={{ animationDelay: '0.5s' }}>
-        {/* Terminal glow effect */}
-        <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10 rounded-full" />
-        <Terminal />
+      <section className="rounded-[var(--radius)] bg-accent px-5 py-4" aria-labelledby="now">
+        <h2 id="now" className="font-mono text-xs text-primary">/now</h2>
+        <p className="mt-1 text-[15px] text-foreground">{NOW.join(" · ")}</p>
       </section>
+
+      <section aria-labelledby="selected-work" className="space-y-3">
+        <div className="flex items-baseline justify-between">
+          <h2 id="selected-work" className="font-mono text-[13px] text-muted-foreground">
+            / selected work
+          </h2>
+          <Link href="/projects" className="font-mono text-[13px] link-underline text-muted-foreground">
+            all projects
+          </Link>
+        </div>
+        <ul className="border-t border-border">
+          {SELECTED.map((item) => (
+            <li key={item.title} className="border-b border-border">
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-4"
+              >
+                <span className="font-medium group-hover:text-primary transition-colors">{item.title}</span>
+                <span className="row-span-2 font-mono text-xs text-muted-foreground">
+                  {item.kind} <span aria-hidden="true">↗</span>
+                </span>
+                <span className="text-sm text-muted-foreground min-w-0">{item.summary}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <TerminalToggle />
     </div>
   );
 }
