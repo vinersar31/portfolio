@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 *.log
 commit_message.txt
+
+# generated from src/data/cv.ts by scripts/generate-cv-pdf.ts
+/public/cv.pdf

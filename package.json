@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cv:pdf": "tsx scripts/generate-cv-pdf.ts",
+    "predev": "npm run cv:pdf",
     "dev": "next dev",
+    "prebuild": "npm run cv:pdf",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -22,13 +25,16 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
+    "@types/pdfkit": "^0.17.7",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "jsdom": "^29.0.0",
+    "pdfkit": "^0.21.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "5.9.3",
     "vitest": "^4.1.8"
   }

@@ -39,8 +39,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with Next.js
-        run: npx --no-install next build
+      - name: Build (generates CV PDF, then Next.js)
+        run: npm run build  # prebuild generates public/cv.pdf from src/data/cv.ts
 
       - name: Deploy to gh-pages branch
         if: github.event_name != 'pull_request'
