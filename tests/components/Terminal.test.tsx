@@ -132,4 +132,45 @@ describe('Terminal', () => {
     expect(screen.getByText('Error: Invalid characters in command')).toBeInTheDocument()
   })
 
+  describe('cd command', () => {
+    const enterInteractive = () => {
+      const container = screen.getByText(/Welcome to vinersarOS/i).parentElement?.parentElement?.parentElement
+      act(() => { if (container) fireEvent.click(container) })
+      return screen.getByRole('textbox')
+    }
+
+    const run = (input: HTMLElement, value: string) => {
+      act(() => {
+        fireEvent.change(input, { target: { value } })
+        fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' })
+      })
+    }
+
+    it('navigates to allowed routes', () => {
+      render(<Terminal />)
+      const input = enterInteractive()
+      run(input, 'cd about')
+
+      expect(mockPush).toHaveBeenCalledWith('/about')
+      expect(screen.getByText('Navigating to /about...')).toBeInTheDocument()
+    })
+
+    it('shows an error for routes that do not exist', () => {
+      render(<Terminal />)
+      const input = enterInteractive()
+      run(input, 'cd invalidroute')
+
+      expect(screen.getByText('cd: invalidroute: No such file or directory')).toBeInTheDocument()
+      expect(mockPush).not.toHaveBeenCalled()
+    })
+
+    it('ignores cd with no argument or ~', () => {
+      render(<Terminal />)
+      const input = enterInteractive()
+      run(input, 'cd ~')
+      run(input, 'cd')
+
+      expect(mockPush).not.toHaveBeenCalled()
+    })
+  })
 })
