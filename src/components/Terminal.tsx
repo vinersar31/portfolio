@@ -266,7 +266,7 @@ export function Terminal() {
 
   return (
     <div
-      className="w-full h-[360px] bg-[#0d1117] dark:bg-[#0d1117] text-zinc-300 font-mono rounded-xl shadow-2xl shadow-black/40 overflow-hidden flex flex-col border border-white/10 dark:border-white/10 relative group transition-all duration-300 hover:shadow-primary/5"
+      className="w-full h-[65vh] min-h-[400px] max-h-[700px] bg-[#0d1117] dark:bg-[#0d1117] text-zinc-300 font-mono rounded-xl shadow-2xl shadow-black/40 overflow-hidden flex flex-col border border-white/10 dark:border-white/10 relative group transition-all duration-300 hover:shadow-primary/5"
       onClick={handleTerminalClick}
     >
       {/* Fake Window Header */}
@@ -277,7 +277,7 @@ export function Terminal() {
           <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
         </div>
         <div className="mx-auto text-xs text-zinc-500 select-none">
-          vinersar31@portfolio:~
+          vinersar31@portofolio:~
         </div>
       </div>
 
@@ -299,7 +299,7 @@ export function Terminal() {
           <div key={entry.id} className="mb-4">
             <div className="flex">
               <span className="text-green-400 mr-2 shrink-0">
-                vinersar31@portfolio&gt;
+                vinersar31@portofolio&gt;
               </span>
               <span className="text-zinc-100">{entry.command}</span>
             </div>
@@ -312,7 +312,7 @@ export function Terminal() {
         {/* Active Input Line */}
         <div className="flex items-center">
           <span className="text-green-400 mr-2 shrink-0">
-            vinersar31@portfolio&gt;
+            vinersar31@portofolio&gt;
           </span>
           <div className="relative flex-1 flex items-center h-6">
             {/* The visible typed text */}
