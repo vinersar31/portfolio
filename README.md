@@ -27,6 +27,7 @@ Then open http://localhost:3000/portfolio (the site is served under the `/portfo
 | Command         | What it does                                  |
 | --------------- | --------------------------------------------- |
 | `npm run dev`   | Start the local dev server                    |
+| `npm run cv:pdf`| Generate `public/cv.pdf` from `src/data/cv.ts` |
 | `npm run build` | Build the static site into `out/`             |
 | `npm run lint`  | Run ESLint                                    |
 | `npm test`      | Run the unit tests once with Vitest           |
@@ -40,10 +41,11 @@ src/
   data/         Site content (about, CV, projects, terminal commands)
   hooks/        Shared React hooks
 tests/          Unit tests, mirroring src/
-public/         Static assets, including cv.pdf and images
+scripts/        Build scripts (CV PDF generation)
+public/         Static assets and images
 ```
 
-Most content changes only need an edit in `src/data/`. Note that `public/cv.pdf` is a separate file and has to be updated by hand when the CV changes.
+Most content changes only need an edit in `src/data/`. `public/cv.pdf` is generated from `src/data/cv.ts` before every `dev` and `build`, so it isn't committed.
 
 ## Deployment
 

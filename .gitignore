@@ -47,3 +47,6 @@ pnpm-lock.yaml
 bun.lock
 bun.lockb
 yarn.lock
+
+# generated from src/data/cv.ts by scripts/generate-cv-pdf.ts
+/public/cv.pdf
